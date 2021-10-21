@@ -1,0 +1,8 @@
+.SelectedSlideControl {
+    display: flex;
+    justify-content: space-between;
+}
+
+.SelectedSlideControl .IconCheckbox {
+    margin-right: 0.25rem;
+}

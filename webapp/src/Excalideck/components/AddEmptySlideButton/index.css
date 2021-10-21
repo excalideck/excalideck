@@ -1,0 +1,17 @@
+.AddEmptySlideButton {
+    cursor: pointer;
+    position: relative;
+    width: 186px;
+    height: 124px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 0px;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    background-color: var(--light-gray-1);
+}
+
+.AddEmptySlideButton:hover {
+    background-color: var(--light-gray-3);
+}

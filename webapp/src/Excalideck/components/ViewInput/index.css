@@ -1,0 +1,11 @@
+.ViewInput {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 0.25rem;
+    justify-content: space-between;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--light-gray-3);
+    margin-bottom: 0.5rem;
+    user-select: none;
+}

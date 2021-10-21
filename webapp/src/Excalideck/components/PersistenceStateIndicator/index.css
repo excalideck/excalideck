@@ -1,0 +1,40 @@
+.PersistenceStateIndicator {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.PersistenceStateIndicator .StatusDot {
+    width: 2.5rem;
+    margin-right: 0.25rem;
+    text-align: center;
+    font-size: 64px;
+    line-height: 0px;
+}
+
+.PersistenceStateIndicator .StatusDot.AllChangesSaved {
+    color: var(--green);
+}
+.PersistenceStateIndicator .StatusDot.SomeUnsavedChanges {
+    color: var(--dark-gray);
+}
+.PersistenceStateIndicator .StatusDot.ErrorSavingChanges {
+    color: var(--red);
+}
+.PersistenceStateIndicator .StatusDot.SavingChanges {
+    color: var(--orange);
+}
+
+.PersistenceStateIndicator .StorageName {
+    color: var(--dark-gray);
+}
+.PersistenceStateIndicator .StorageName label {
+    font-size: 0.75rem;
+}
+
+.PersistenceStateIndicator .StorageName div {
+    width: 142px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

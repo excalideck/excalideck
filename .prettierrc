@@ -1,0 +1,13 @@
+{
+  "proseWrap": "always",
+  "overrides": [
+    {
+      "files": "*.@(ts|tsx|js|jsx|css)",
+      "options": { "tabWidth": 4 }
+    },
+    {
+      "files": "*.yml",
+      "options": { "printWidth": 120 }
+    }
+  ]
+}

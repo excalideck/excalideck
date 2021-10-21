@@ -1,0 +1,14 @@
+.IconCheckbox {
+    cursor: pointer;
+    width: 2.5rem;
+    height: 2.5rem;
+    border: 0px;
+    border-radius: 0.25rem;
+    font-size: 1rem;
+    background-color: var(--light-gray-1);
+}
+
+.IconCheckbox:hover,
+.CheckedIconCheckbox {
+    background-color: var(--light-gray-3);
+}

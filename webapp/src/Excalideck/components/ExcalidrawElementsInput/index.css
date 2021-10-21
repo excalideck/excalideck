@@ -1,0 +1,13 @@
+.ExcalidrawElementsInput {
+    width: 100%;
+    height: 100%;
+}
+
+.ExcalidrawElementsInput
+    .App-menu_top
+    .Stack_vertical
+    .Island
+    .Stack_vertical
+    > .Stack_horizontal {
+    display: none;
+}

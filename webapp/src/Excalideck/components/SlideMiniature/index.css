@@ -1,0 +1,31 @@
+.SlideMiniature {
+    box-sizing: border-box;
+    position: relative;
+    width: 186px;
+    height: 124px;
+    border: 2px solid var(--light-gray-1);
+    border-radius: 0.25rem;
+    margin-bottom: 0.5rem;
+    overflow: hidden;
+    user-select: none;
+    display: grid;
+    font-size: 2rem;
+}
+
+.SlideMiniatureLayer {
+    width: 100%;
+    height: 100%;
+    grid-column: 1;
+    grid-row: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.SelectedSlideMiniature {
+    border-color: var(--orange);
+}
+
+.NonRenderingSlideMiniature {
+    opacity: 0.5;
+}

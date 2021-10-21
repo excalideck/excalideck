@@ -1,0 +1,22 @@
+{
+  "name": "@excalideck/root",
+  "version": "0.0.0",
+  "private": true,
+  "workspaces": [
+    "webapp"
+  ],
+  "scripts": {
+    "build": "yarn workspaces foreach run build",
+    "test": "yarn workspaces foreach run test",
+    "check-formatting": "prettier --list-different .",
+    "fix-formatting": "prettier --write .",
+    "deploy:bundle": "staticdeploy bundle --config webapp/staticdeploy.config.js",
+    "deploy:entrypoint": "staticdeploy deploy --config webapp/staticdeploy.config.js"
+  },
+  "devDependencies": {
+    "@staticdeploy/cli": "^0.15.4",
+    "prettier": "^2.4.1",
+    "typescript": "^4.4.4"
+  },
+  "packageManager": "yarn@3.0.2"
+}

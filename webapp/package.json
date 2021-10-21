@@ -1,0 +1,57 @@
+{
+  "name": "@excalideck/webapp",
+  "version": "0.0.0",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "PUBLIC_URL=. react-scripts build",
+    "test": "react-scripts test"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^4.0.0",
+    "@dnd-kit/sortable": "^5.0.0",
+    "@dnd-kit/utilities": "^3.0.0",
+    "@dwelle/browser-fs-access": "^0.21.3",
+    "@excalidraw/excalidraw": "^0.10.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.15",
+    "clsx": "^1.1.1",
+    "lodash": "^4.17.21",
+    "nanoid": "^3.1.30",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-use": "^17.3.1"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "@types/jest": "^26.0.15",
+    "@types/lodash": "^4.14.175",
+    "@types/node": "^12.0.0",
+    "@types/react": "^17.0.30",
+    "@types/react-dom": "^17.0.9",
+    "eslint-config-react-app": "^6.0.0",
+    "react-scripts": "4.0.3",
+    "typescript": "^4.4.4"
+  },
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

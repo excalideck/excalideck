@@ -1,0 +1,5 @@
+.SlidesControl {
+    max-height: calc(100vh - 270px);
+    width: 186px;
+    overflow-y: scroll;
+}

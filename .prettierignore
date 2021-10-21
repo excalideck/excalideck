@@ -1,0 +1,9 @@
+# yarn
+.yarn/*
+.pnp.*
+
+# Output files and directories
+dist
+dist-ssr
+*.local
+.vite-cache
