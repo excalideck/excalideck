@@ -6,8 +6,8 @@ export default class JsonStorageFileDefinition
 {
     public extension = ".excalideck";
 
-    // TODO: use a custom mimeType, registering it @ https://www.iana.org/
-    public mimeType = "application/json";
+    // TODO: register @ https://www.iana.org/
+    public mimeType = "application/vdn.excalideck+json";
 
     async extractDeckFromFile(file: Blob): Promise<Deck> {
         return JSON.parse(await file.text());
