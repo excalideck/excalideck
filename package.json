@@ -11,7 +11,8 @@
     "check-formatting": "prettier --list-different .",
     "fix-formatting": "prettier --write .",
     "deploy:bundle": "staticdeploy bundle --config webapp/staticdeploy.config.js",
-    "deploy:entrypoint": "staticdeploy deploy --config webapp/staticdeploy.config.js"
+    "deploy:entrypoint": "staticdeploy deploy --config webapp/staticdeploy.config.js",
+    "deploy:purge": "./scripts/purge-cdn-cache.sh"
   },
   "devDependencies": {
     "@staticdeploy/cli": "^0.15.4",
