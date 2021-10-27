@@ -1,5 +1,5 @@
-import Excalideck from "../Excalideck";
-import Deck from "../Excalideck/entities/Deck";
+import { Deck } from "@excalideck/deck";
+import ExcalideckEditor from "../ExcalideckEditor";
 import usePersistentDeck from "./hooks/usePersistentDeck";
 
 interface Props {
@@ -9,7 +9,7 @@ export default function App({ initialDeck }: Props) {
     const { deck, persistenceState, updateDeck, saveFile, openFile } =
         usePersistentDeck(initialDeck);
     return (
-        <Excalideck
+        <ExcalideckEditor
             key={persistenceState?.storageName ?? "localStorage"}
             initialDeck={deck}
             onDeckChange={updateDeck}

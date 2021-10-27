@@ -1,4 +1,4 @@
-import Deck from "../../Excalideck/entities/Deck";
+import { Deck } from "@excalideck/deck";
 
 export default interface StorageFileDefinition {
     extension: string;

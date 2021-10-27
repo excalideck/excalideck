@@ -1,4 +1,4 @@
-export { default as DeckApi } from "./DeckApi";
+export { default as DeckOperations } from "./DeckOperations";
 export { default as Deck } from "./entities/Deck";
 export { default as ExcalidrawElement } from "./entities/ExcalidrawElement";
 export { default as Point } from "./entities/Point";

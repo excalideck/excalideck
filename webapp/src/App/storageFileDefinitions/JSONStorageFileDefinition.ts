@@ -1,13 +1,12 @@
-import Deck from "../../Excalideck/entities/Deck";
+import { Deck } from "@excalideck/deck";
 import StorageFileDefinition from "../entities/StorageFileDefinition";
 
 export default class JsonStorageFileDefinition
     implements StorageFileDefinition
 {
-    public extension = ".excalideck";
+    public extension = ".json";
 
-    // TODO: register @ https://www.iana.org/
-    public mimeType = "application/vdn.excalideck+json";
+    public mimeType = "application/json";
 
     async extractDeckFromFile(file: Blob): Promise<Deck> {
         return JSON.parse(await file.text());

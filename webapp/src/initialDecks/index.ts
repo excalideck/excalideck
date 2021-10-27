@@ -1,6 +1,5 @@
-import Deck from "../Excalideck/entities/Deck";
-import empty from "./empty.json";
-import homepage from "./homepage.json";
+import { Deck } from "@excalideck/deck";
+import empty from "./empty";
 
-const initialDecks: Record<string, Deck> = { empty, homepage };
+const initialDecks: Record<string, Deck> = { empty };
 export default initialDecks;

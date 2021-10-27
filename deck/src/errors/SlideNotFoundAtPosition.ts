@@ -1,8 +1,8 @@
-export default class SlideNotFoundAtPosition {
+export default class SlideNotFoundAtIndex {
     constructor(
-        public nonExistingPosition: number,
-        public message = `No slide found at position = ${nonExistingPosition}`,
-        public name = "SlideNotFoundWithId",
+        public nonExistingIndex: number,
+        public message = `No slide found at index = ${nonExistingIndex}`,
+        public name = "SlideNotFoundAtIndex",
         public stack = new Error().stack
     ) {}
 }

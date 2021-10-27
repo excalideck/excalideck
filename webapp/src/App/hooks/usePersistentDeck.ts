@@ -3,10 +3,10 @@ import {
     fileSave,
     FileSystemHandle,
 } from "@dwelle/browser-fs-access";
+import { Deck } from "@excalideck/deck";
 import { useState } from "react";
-import Deck from "../../Excalideck/entities/Deck";
-import PersistenceState from "../../Excalideck/entities/PersistenceState";
-import PersistenceStateStatus from "../../Excalideck/entities/PersistenceStateStatus";
+import PersistenceState from "../../ExcalideckEditor/entities/PersistenceState";
+import PersistenceStateStatus from "../../ExcalideckEditor/entities/PersistenceStateStatus";
 import JsonStorageFileDefinition from "../storageFileDefinitions/JSONStorageFileDefinition";
 
 const jsonStorageFileDefinition = new JsonStorageFileDefinition();
