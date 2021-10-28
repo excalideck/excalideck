@@ -9,12 +9,12 @@
   ],
   "scripts": {
     "clean": "rm -rf build dist",
-    "build": "yarn clean && parcel build",
-    "start": "parcel dev/index.html",
+    "build": "yarn clean && parcel build --no-autoinstall",
+    "start": "parcel dev/index.html --no-autoinstall",
     "test": "jest"
   },
   "dependencies": {
-    "@dnd-kit/core": "^4.0.0",
+    "@dnd-kit/core": "^4.0.1",
     "@dnd-kit/sortable": "^5.0.0",
     "@dnd-kit/utilities": "^3.0.0",
     "@excalideck/deck": "workspace:*",

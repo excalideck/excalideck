@@ -3,7 +3,10 @@
 .pnp.*
 
 # Output files and directories
+build
 dist
-dist-ssr
-*.local
-.vite-cache
+.parcel-cache
+
+# Misc
+.vscode
+

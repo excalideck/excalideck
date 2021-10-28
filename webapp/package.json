@@ -11,8 +11,8 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean": "rm -rf build dist",
-    "build": "yarn clean && parcel build",
-    "start": "parcel",
+    "build": "yarn clean && parcel build --no-autoinstall",
+    "start": "parcel --no-autoinstall",
     "test": "jest"
   },
   "dependencies": {
@@ -26,7 +26,7 @@
     "@parcel/packager-raw-url": "^2.0.0",
     "@parcel/transformer-webmanifest": "^2.0.0",
     "@types/jest": "^27.0.2",
-    "@types/react": "^17.0.31",
+    "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "jest": "^27.3.1",
     "parcel": "^2.0.0",
