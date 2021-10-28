@@ -1,8 +1,8 @@
 import PersistenceStateStatus from "./PersistenceStateStatus";
 
 type PersistenceState = {
-    storageName: string;
-    status: PersistenceStateStatus;
-    savingError: Error | null;
+    readonly storageName: string;
+    readonly status: PersistenceStateStatus;
+    readonly savingError: Error | null;
 } | null;
 export default PersistenceState;

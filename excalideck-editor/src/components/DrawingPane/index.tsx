@@ -1,5 +1,4 @@
 import { Deck, ExcalidrawElement, Hash, Slide } from "@excalideck/deck";
-import { useCallback } from "react";
 import View from "../../entities/View";
 import ExcalidrawElementUtils from "../../utils/ExcalidrawElementUtils";
 import ExcalidrawElementsInput from "../ExcalidrawElementsInput";
@@ -11,7 +10,8 @@ interface Props {
         commonExcalidrawElements: ExcalidrawElement[]
     ) => void;
     selectedSlide: Slide;
-    onUpdateSelectedSlideExcalidrawElements: (
+    onUpdateSlideExcalidrawElements: (
+        slideId: string,
         excalidrawElements: ExcalidrawElement[]
     ) => void;
 }
@@ -20,32 +20,8 @@ export default function DrawingPane({
     deck,
     onUpdateCommonExcalidrawElements,
     selectedSlide,
-    onUpdateSelectedSlideExcalidrawElements,
+    onUpdateSlideExcalidrawElements,
 }: Props) {
-    const onChange = useCallback(
-        (updatedExcalidrawElements) => {
-            if (activeView === View.Slides) {
-                onUpdateSelectedSlideExcalidrawElements(
-                    ExcalidrawElementUtils.extractSlideExcalidrawElements(
-                        updatedExcalidrawElements,
-                        deck.commonExcalidrawElements
-                    )
-                );
-            } else {
-                onUpdateCommonExcalidrawElements(
-                    ExcalidrawElementUtils.extractCommonExcalidrawElements(
-                        updatedExcalidrawElements
-                    )
-                );
-            }
-        },
-        [
-            activeView,
-            deck.commonExcalidrawElements,
-            onUpdateCommonExcalidrawElements,
-            onUpdateSelectedSlideExcalidrawElements,
-        ]
-    );
     return (
         <ExcalidrawElementsInput
             key={[
@@ -63,7 +39,23 @@ export default function DrawingPane({
                       )
                     : ExcalidrawElementUtils.getCommonExcalidrawElements(deck)
             }
-            onChange={onChange}
+            onChange={(updatedExcalidrawElements) => {
+                if (activeView === View.Slides) {
+                    onUpdateSlideExcalidrawElements(
+                        selectedSlide.id,
+                        ExcalidrawElementUtils.extractSlideExcalidrawElements(
+                            updatedExcalidrawElements,
+                            deck.commonExcalidrawElements
+                        )
+                    );
+                } else {
+                    onUpdateCommonExcalidrawElements(
+                        ExcalidrawElementUtils.extractCommonExcalidrawElements(
+                            updatedExcalidrawElements
+                        )
+                    );
+                }
+            }}
         />
     );
 }

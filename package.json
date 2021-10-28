@@ -10,6 +10,7 @@
   "scripts": {
     "build": "yarn workspaces foreach run build",
     "test": "yarn workspaces foreach run test",
+    "lint": "eslint",
     "check-formatting": "prettier --list-different .",
     "fix-formatting": "prettier --write .",
     "deploy:bundle": "staticdeploy bundle --config webapp/staticdeploy.config.js",
@@ -17,7 +18,20 @@
     "deploy:purge": "./scripts/purge-cdn-cache.sh"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.14.7",
     "@staticdeploy/cli": "^0.15.4",
+    "@typescript-eslint/eslint-plugin": "^4.0.0",
+    "@typescript-eslint/parser": "^4.0.0",
+    "babel-preset-react-app": "^10.0.0",
+    "eslint": "^7.5.0",
+    "eslint-config-react-app": "^6.0.0",
+    "eslint-plugin-flowtype": "^5.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^24.0.0",
+    "eslint-plugin-jsx-a11y": "^6.3.1",
+    "eslint-plugin-react": "^7.20.3",
+    "eslint-plugin-react-hooks": "^4.0.8",
+    "eslint-plugin-testing-library": "^3.9.0",
     "prettier": "^2.4.1",
     "prettier-plugin-organize-imports": "^2.3.4",
     "prettier-plugin-sh": "^0.7.1",

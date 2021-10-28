@@ -1,10 +1,8 @@
 import { ExcalidrawElement, Hash, PrintableArea } from "@excalideck/deck";
 import Excalidraw from "@excalidraw/excalidraw";
-import { ImportedDataState } from "@excalidraw/excalidraw/types/data/types";
-import { UIOptions } from "@excalidraw/excalidraw/types/types";
-import { cloneDeep, debounce } from "lodash";
-import { useCallback, useEffect, useMemo, useState } from "react";
-import { unstable_batchedUpdates } from "react-dom";
+import { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types/types";
+import { cloneDeep } from "lodash";
+import { useEffect, useRef } from "react";
 import PrintableAreaUtils from "../../utils/PrintableAreaUtils";
 import "./index.css";
 
@@ -72,78 +70,52 @@ interface Props {
  * while allowed, does not affect the component and does not trigger a
  * re-render. If you need the component to re-render with a new `initialValue`,
  * destroy and re-create it (e.g. changing its `key`).
- *
- * On the other hand, changing the `onChange` prop does trigger a re-render, so
- * keep it stable.
  */
 export default function ExcalidrawElementsInput({
     printableArea,
     initialValue,
     onChange,
 }: Props) {
-    const [currentElements, setCurrentElements] = useState(() =>
-        cloneDeep(initialValue)
-    );
+    const excalidrawRef = useRef<ExcalidrawImperativeAPI>(null);
+    const previousHashRef = useRef<number>();
 
-    const debouncedOnChangeCallback = debounce(
-        (possiblyChangedElements: ExcalidrawElement[]) => {
-            if (
-                Hash.excalidrawElements(possiblyChangedElements) !==
-                Hash.excalidrawElements(currentElements)
-            ) {
-                const changedElements = cloneDeep(possiblyChangedElements);
-                unstable_batchedUpdates(() => {
-                    setCurrentElements(changedElements);
-                    onChange(changedElements);
-                });
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            if (!excalidrawRef.current) {
+                return;
             }
-        },
-        100
-    );
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    const onChangeCallback = useCallback(debouncedOnChangeCallback, [
-        currentElements,
-        onChange,
-    ]);
-    useEffect(
-        () => () => debouncedOnChangeCallback.cancel(),
-        [debouncedOnChangeCallback]
-    );
+            const currentElements =
+                excalidrawRef.current.getSceneElementsIncludingDeleted();
+            const currentHash = Hash.excalidrawElements(currentElements as any);
+            if (currentHash !== previousHashRef.current) {
+                previousHashRef.current = currentHash;
+                onChange(cloneDeep(currentElements as any));
+            }
+        }, 100);
+        return () => clearInterval(intervalId);
+    }, [onChange]);
 
-    const initialData: ImportedDataState = useMemo(
-        () => ({
-            elements: currentElements as any,
-            appState: {
-                zoom: PrintableAreaUtils.getFittingZoom(printableArea),
-            },
-        }),
-        // Passing undefined, as we don't care about updating the zoom when
-        // printableArea changes (when it changes, the component will be
-        // re-mounted)
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-        undefined
-    );
-
-    const uiOptions: UIOptions = useMemo(
-        () => ({
-            canvasActions: {
-                changeViewBackgroundColor: true,
-                theme: true,
-                clearCanvas: false,
-                export: false,
-                loadScene: false,
-                saveAsImage: false,
-                saveToActiveFile: false,
-            },
-        }),
-        []
-    );
     return (
         <div className="ExcalidrawElementsInput">
             <Excalidraw
-                initialData={initialData}
-                onChange={onChangeCallback as any}
-                UIOptions={uiOptions}
+                ref={excalidrawRef}
+                initialData={{
+                    elements: initialValue as any,
+                    appState: {
+                        zoom: PrintableAreaUtils.getFittingZoom(printableArea),
+                    },
+                }}
+                UIOptions={{
+                    canvasActions: {
+                        changeViewBackgroundColor: true,
+                        theme: true,
+                        clearCanvas: false,
+                        export: false,
+                        loadScene: false,
+                        saveAsImage: false,
+                        saveToActiveFile: false,
+                    },
+                }}
             />
         </div>
     );

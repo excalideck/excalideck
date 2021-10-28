@@ -31,11 +31,11 @@ export default function ExcalideckEditor({
         updateCommonExcalidrawElements,
         updatePrintableArea,
         selectedSlide,
-        deleteSelectedSlide,
+        deleteSlide,
         selectSlide,
-        updateSelectedSlideExcalidrawElements,
-        updateSelectedSlideShouldRender,
-        updateSelectedSlideShouldRenderWithCommonExcalidrawElements,
+        updateSlideExcalidrawElements,
+        updateSlideShouldRender,
+        updateSlideShouldRenderWithCommonExcalidrawElements,
     } = useExcalideckEditorState(initialDeck, onDeckChange);
     return (
         <div className="ExcalideckEditor">
@@ -46,9 +46,7 @@ export default function ExcalideckEditor({
                     updateCommonExcalidrawElements
                 }
                 selectedSlide={selectedSlide}
-                onUpdateSelectedSlideExcalidrawElements={
-                    updateSelectedSlideExcalidrawElements
-                }
+                onUpdateSlideExcalidrawElements={updateSlideExcalidrawElements}
             />
             <ControlPane
                 activeView={activeView}
@@ -58,13 +56,11 @@ export default function ExcalideckEditor({
                 onMoveSlide={moveSlide}
                 onUpdatePrintableArea={updatePrintableArea}
                 selectedSlide={selectedSlide}
-                onDeleteSelectedSlide={deleteSelectedSlide}
+                onDeleteSlide={deleteSlide}
                 onSelectSlide={selectSlide}
-                onUpdateSelectedSlideShouldRender={
-                    updateSelectedSlideShouldRender
-                }
-                onUpdateSelectedSlideShouldRenderWithCommonExcalidrawElements={
-                    updateSelectedSlideShouldRenderWithCommonExcalidrawElements
+                onUpdateSlideShouldRender={updateSlideShouldRender}
+                onUpdateSlideShouldRenderWithCommonExcalidrawElements={
+                    updateSlideShouldRenderWithCommonExcalidrawElements
                 }
                 persistenceState={persistenceState}
                 onOpen={onOpen}

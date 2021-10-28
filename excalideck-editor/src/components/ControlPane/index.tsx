@@ -17,10 +17,11 @@ interface Props {
     onMoveSlide: (fromIndex: number, toIndex: number) => void;
     onUpdatePrintableArea: (printableArea: PrintableArea) => void;
     selectedSlide: Slide;
-    onDeleteSelectedSlide: () => void;
+    onDeleteSlide: (slideId: string) => void;
     onSelectSlide: (slideId: string) => void;
-    onUpdateSelectedSlideShouldRender: (shouldRender: boolean) => void;
-    onUpdateSelectedSlideShouldRenderWithCommonExcalidrawElements: (
+    onUpdateSlideShouldRender: (slideId: string, shouldRender: boolean) => void;
+    onUpdateSlideShouldRenderWithCommonExcalidrawElements: (
+        slideId: string,
         shouldRenderWithCommonExcalidrawElements: boolean
     ) => void;
     persistenceState: PersistenceState;
@@ -35,10 +36,10 @@ export default function ControlPane({
     onMoveSlide,
     onUpdatePrintableArea,
     selectedSlide,
-    onDeleteSelectedSlide,
+    onDeleteSlide,
     onSelectSlide,
-    onUpdateSelectedSlideShouldRender,
-    onUpdateSelectedSlideShouldRenderWithCommonExcalidrawElements,
+    onUpdateSlideShouldRender,
+    onUpdateSlideShouldRenderWithCommonExcalidrawElements,
     persistenceState,
     onOpen,
     onSave,
@@ -74,10 +75,20 @@ export default function ControlPane({
                 <ControlPaneIsland>
                     <SelectedSlideControl
                         slide={selectedSlide}
-                        onDelete={onDeleteSelectedSlide}
-                        onUpdateShouldRender={onUpdateSelectedSlideShouldRender}
-                        onUpdateShouldRenderWithCommonExcalidrawElements={
-                            onUpdateSelectedSlideShouldRenderWithCommonExcalidrawElements
+                        onDelete={() => onDeleteSlide(selectedSlide.id)}
+                        onUpdateShouldRender={(shouldRender) =>
+                            onUpdateSlideShouldRender(
+                                selectedSlide.id,
+                                shouldRender
+                            )
+                        }
+                        onUpdateShouldRenderWithCommonExcalidrawElements={(
+                            shouldRenderWithCommonExcalidrawElements
+                        ) =>
+                            onUpdateSlideShouldRenderWithCommonExcalidrawElements(
+                                selectedSlide.id,
+                                shouldRenderWithCommonExcalidrawElements
+                            )
                         }
                     />
                 </ControlPaneIsland>

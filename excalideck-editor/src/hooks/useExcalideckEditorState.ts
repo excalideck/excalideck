@@ -1,79 +1,111 @@
-import { Deck, Hash } from "@excalideck/deck";
-import { mapValues } from "lodash";
-import { useCallback, useState } from "react";
+import {
+    Deck,
+    DeckOperations,
+    ExcalidrawElement,
+    Hash,
+    PrintableArea,
+} from "@excalideck/deck";
+import { Reducer, useEffect, useReducer } from "react";
 import ExcalideckEditorState from "../entities/ExcalideckEditorState";
 import View from "../entities/View";
-import ExcalideckEditorStateApi from "../ExcalideckEditorStateApi";
+import ExcalideckEditorStateOperations from "../ExcalideckEditorStateOperations";
 
 export default function useExcalideckEditorState(
     initialDeck: Deck,
     onDeckChange: (deck: Deck) => void
 ) {
-    const [excalideckEditorState, setExcalideckEditorState] =
-        useState<ExcalideckEditorState>({
-            activeView: View.Slides,
-            deck: initialDeck,
-            selectedSlideId: initialDeck.slides[0]!.id,
-        });
+    const [excalideckEditorState, dispatch] = useReducer<
+        Reducer<ExcalideckEditorState, Action>
+    >(excalideckEditorStateReducer, {
+        activeView: View.Slides,
+        deck: initialDeck,
+        selectedSlideId: initialDeck.slides[0]!.id,
+    });
+
     const deckHash = Hash.deck(excalideckEditorState.deck);
-
-    const selectedSlide = excalideckEditorState.deck.slides.find(
-        (slide) => slide.id === excalideckEditorState.selectedSlideId
-    )!;
-
-    const setExcalideckEditorStateAndCallOnChange = useCallback(
-        (updatedExcalideckEditorState: ExcalideckEditorState) => {
-            setExcalideckEditorState(updatedExcalideckEditorState);
-            if (Hash.deck(updatedExcalideckEditorState.deck) !== deckHash) {
-                onDeckChange(updatedExcalideckEditorState.deck);
-            }
-        },
-        [onDeckChange, deckHash]
-    );
+    useEffect(() => {
+        onDeckChange(excalideckEditorState.deck);
+    }, [onDeckChange, deckHash]);
 
     return {
-        ...excalideckEditorState,
-        selectedSlide,
-        ...statifyExcalideckEditorStateApi(
-            excalideckEditorState,
-            setExcalideckEditorStateAndCallOnChange
+        activeView: excalideckEditorState.activeView,
+        activateView(view: View) {
+            dispatch(["activateView", view]);
+        },
+
+        deck: excalideckEditorState.deck,
+        updatePrintableArea(printableArea: PrintableArea) {
+            dispatch(["updatePrintableArea", printableArea]);
+        },
+        updateCommonExcalidrawElements(
+            commonExcalidrawElements: ExcalidrawElement[]
+        ) {
+            dispatch([
+                "updateCommonExcalidrawElements",
+                commonExcalidrawElements,
+            ]);
+        },
+        addEmptySlide() {
+            dispatch(["addEmptySlide"]);
+        },
+        moveSlide(fromIndex: number, toIndex: number) {
+            dispatch(["moveSlide", fromIndex, toIndex]);
+        },
+        deleteSlide(slideId: string) {
+            dispatch(["deleteSlide", slideId]);
+        },
+        updateSlideShouldRender(slideId: string, shouldRender: boolean) {
+            dispatch(["updateSlideShouldRender", slideId, shouldRender]);
+        },
+        updateSlideShouldRenderWithCommonExcalidrawElements(
+            slideId: string,
+            shouldRenderWithCommonExcalidrawElements: boolean
+        ) {
+            dispatch([
+                "updateSlideShouldRender",
+                slideId,
+                shouldRenderWithCommonExcalidrawElements,
+            ]);
+        },
+        updateSlideExcalidrawElements(
+            slideId: string,
+            excalidrawElements: ExcalidrawElement[]
+        ) {
+            dispatch([
+                "updateSlideExcalidrawElements",
+                slideId,
+                excalidrawElements,
+            ]);
+        },
+
+        selectedSlide: DeckOperations.getSlide(
+            excalideckEditorState.deck,
+            excalideckEditorState.selectedSlideId
         ),
+        selectSlide(slideId: string) {
+            dispatch(["selectSlide", slideId]);
+        },
     };
 }
 
-type TupleSplit<
-    T,
-    N extends number,
-    O extends readonly any[] = readonly []
-> = O["length"] extends N
-    ? [O, T]
-    : T extends readonly [infer F, ...infer R]
-    ? TupleSplit<readonly [...R], N, readonly [...O, F]>
-    : [O, T];
+type Action =
+    | ["activateView", View]
+    | ["updatePrintableArea", PrintableArea]
+    | ["updateCommonExcalidrawElements", ExcalidrawElement[]]
+    | ["addEmptySlide"]
+    | ["moveSlide", number, number]
+    | ["deleteSlide", string]
+    | ["updateSlideShouldRender", string, boolean]
+    | ["updateSlideShouldRenderWithCommonExcalidrawElements", string, boolean]
+    | ["updateSlideExcalidrawElements", string, ExcalidrawElement[]]
+    | ["selectSlide", string];
 
-type StatifiedExcalideckEditorStateApi = {
-    [Key in keyof typeof ExcalideckEditorStateApi]: (
-        ...args: TupleSplit<
-            Parameters<typeof ExcalideckEditorStateApi[Key]>,
-            1
-        >[1]
-    ) => void;
-};
-
-function statifyExcalideckEditorStateApi(
+function excalideckEditorStateReducer(
     excalideckEditorState: ExcalideckEditorState,
-    setExcalideckEditorState: (
-        excalideckEditorState: ExcalideckEditorState
-    ) => void
-): StatifiedExcalideckEditorStateApi {
-    return mapValues(
-        // For each function of the ExcalideckEditorStateApi, expose a
-        // function that takes the same arguments, minus the initial
-        // excalideckEditorState. The function then injects the
-        // excalideckEditorState argument, calls the
-        ExcalideckEditorStateApi,
-        (apiFn: any) =>
-            (...args: any[]) =>
-                setExcalideckEditorState(apiFn(excalideckEditorState, ...args))
+    [methodName, ...params]: Action
+): ExcalideckEditorState {
+    return (ExcalideckEditorStateOperations[methodName] as any)(
+        excalideckEditorState,
+        ...params
     );
 }
