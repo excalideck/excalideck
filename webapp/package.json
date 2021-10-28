@@ -1,58 +1,36 @@
 {
   "name": "@excalideck/webapp",
   "version": "0.0.0",
+  "targets": {
+    "default": {
+      "source": "src/index.html",
+      "distDir": "build",
+      "publicUrl": "."
+    }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "PUBLIC_URL=. react-scripts build",
-    "test": "react-scripts test"
+    "clean": "rm -rf build dist",
+    "build": "yarn clean && parcel build",
+    "start": "parcel",
+    "test": "jest"
   },
   "dependencies": {
-    "@dnd-kit/core": "^4.0.0",
-    "@dnd-kit/sortable": "^5.0.0",
-    "@dnd-kit/utilities": "^3.0.0",
     "@dwelle/browser-fs-access": "^0.21.3",
     "@excalideck/deck": "workspace:*",
-    "@excalidraw/excalidraw": "^0.10.0",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-regular-svg-icons": "^5.15.4",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
-    "clsx": "^1.1.1",
-    "lodash": "^4.17.21",
-    "nanoid": "^3.1.30",
+    "@excalideck/excalideck-editor": "workspace:*",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-use": "^17.3.1"
+    "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.1.2",
-    "@testing-library/user-event": "^13.5.0",
+    "@parcel/packager-raw-url": "^2.0.0",
+    "@parcel/transformer-webmanifest": "^2.0.0",
     "@types/jest": "^27.0.2",
-    "@types/lodash": "^4.14.176",
-    "@types/node": "^16.11.4",
     "@types/react": "^17.0.31",
     "@types/react-dom": "^17.0.10",
-    "eslint-config-react-app": "^6.0.0",
-    "react-scripts": "4.0.3",
+    "jest": "^27.3.1",
+    "parcel": "^2.0.0",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
   }
 }

@@ -9,7 +9,9 @@
 
 # Build output
 build
-## Some modules (like babel-loader) store their cache files in
+dist
+.parcel-cache
+## Some modules (like babel-loader) might store their cache files in
 ## node_modules/.cache
 node_modules
 

@@ -6,7 +6,8 @@
     "build/src/**/*"
   ],
   "scripts": {
-    "compile": "rm -rf build && tsc",
+    "clean": "rm -rf build",
+    "build": "yarn clean && tsc",
     "test": "jest"
   },
   "devDependencies": {

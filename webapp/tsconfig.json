@@ -1,14 +1,12 @@
 {
   "extends": "../tsconfig.common.json",
+  "include": ["src/**/*", "test/**/*"],
   "compilerOptions": {
     // Language and Environment
-    "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
 
     // Modules
     "module": "ESNext",
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
     "jsx": "react-jsx",
 
     // Emit
@@ -22,6 +20,5 @@
 
     // Completeness
     "skipLibCheck": true
-  },
-  "include": ["src"]
+  }
 }

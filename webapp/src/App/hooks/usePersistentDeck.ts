@@ -4,9 +4,11 @@ import {
     FileSystemHandle,
 } from "@dwelle/browser-fs-access";
 import { Deck } from "@excalideck/deck";
+import {
+    PersistenceState,
+    PersistenceStateStatus,
+} from "@excalideck/excalideck-editor";
 import { useState } from "react";
-import PersistenceState from "../../ExcalideckEditor/entities/PersistenceState";
-import PersistenceStateStatus from "../../ExcalideckEditor/entities/PersistenceStateStatus";
 import JsonStorageFileDefinition from "../storageFileDefinitions/JSONStorageFileDefinition";
 
 const jsonStorageFileDefinition = new JsonStorageFileDefinition();
