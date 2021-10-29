@@ -1,12 +1,15 @@
 # yarn
 .yarn/*
 .pnp.*
+node_modules
 
 # Output files and directories
 build
 dist
 .parcel-cache
 
+# Tests
+coverage
+
 # Misc
 .vscode
-

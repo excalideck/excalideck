@@ -1,9 +1,6 @@
 {
-  "printableArea": {
-    "topLeftCorner": { "x": 0, "y": 0 },
-    "bottomRightCorner": { "x": 1500, "y": 1000 }
-  },
-  "commonElements": [
+  "printableArea": { "width": 1500, "height": 1000 },
+  "commonExcalidrawElements": [
     {
       "type": "rectangle",
       "version": 1,
@@ -368,8 +365,8 @@
     {
       "id": "lAyV-2GhV9sLZrtJQCEok",
       "shouldRender": true,
-      "shouldRenderWithCommonElements": false,
-      "elements": [
+      "shouldRenderWithCommonExcalidrawElements": false,
+      "excalidrawElements": [
         {
           "type": "rectangle",
           "version": 32,
@@ -1506,8 +1503,8 @@
     {
       "id": "ddWqoHp2aMLifdXPfzajK",
       "shouldRender": true,
-      "shouldRenderWithCommonElements": true,
-      "elements": [
+      "shouldRenderWithCommonExcalidrawElements": true,
+      "excalidrawElements": [
         {
           "type": "rectangle",
           "version": 10,
@@ -2425,8 +2422,8 @@
     {
       "id": "dD1jkAZj3JAcFoKvya-YC",
       "shouldRender": true,
-      "shouldRenderWithCommonElements": true,
-      "elements": [
+      "shouldRenderWithCommonExcalidrawElements": true,
+      "excalidrawElements": [
         {
           "type": "rectangle",
           "version": 5,
@@ -2895,8 +2892,8 @@
     {
       "id": "xNNVI2dFN1KpFyGQCp68k",
       "shouldRender": true,
-      "shouldRenderWithCommonElements": true,
-      "elements": [
+      "shouldRenderWithCommonExcalidrawElements": true,
+      "excalidrawElements": [
         {
           "type": "rectangle",
           "version": 2,

@@ -8,7 +8,7 @@ import {
     PersistenceState,
     PersistenceStateStatus,
 } from "@excalideck/excalideck-editor";
-import { useState } from "react";
+import { useCallback, useState } from "react";
 import JsonStorageFileDefinition from "../storageFileDefinitions/JSONStorageFileDefinition";
 
 const jsonStorageFileDefinition = new JsonStorageFileDefinition();
@@ -44,7 +44,7 @@ export default function usePersistentDeck(initialDeck: Deck) {
         });
     }
 
-    function updateDeck(deck: Deck) {
+    const updateDeck = useCallback(function updateDeck(deck: Deck) {
         setAppState((latestAppState) => ({
             ...latestAppState,
             deck,
@@ -55,7 +55,7 @@ export default function usePersistentDeck(initialDeck: Deck) {
                   }
                 : null,
         }));
-    }
+    }, []);
 
     async function saveFile() {
         const handle = await fileSave(

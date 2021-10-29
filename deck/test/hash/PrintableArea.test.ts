@@ -1,8 +1,8 @@
 import { Hash, PrintableArea } from "../../src";
-import { makeRandomPoint, makeRandomPrintableArea } from "./testUtils";
+import { makeRandomPrintableArea } from "./testUtils";
 
 describe("Hash.printableArea uniquely identifies a printable area", () => {
-    it("case: all different corners, different hashes", () => {
+    it("case: different printable areas, different hashes", () => {
         // Setup
         const printableArea0: PrintableArea = makeRandomPrintableArea();
         const printableArea1: PrintableArea = makeRandomPrintableArea();
@@ -13,12 +13,12 @@ describe("Hash.printableArea uniquely identifies a printable area", () => {
         );
     });
 
-    it("case: different topLeftCorner, different hashes", () => {
+    it("case: different width, different hashes", () => {
         // Setup
         const printableArea0: PrintableArea = makeRandomPrintableArea();
         const printableArea1: PrintableArea = {
             ...printableArea0,
-            topLeftCorner: makeRandomPoint(),
+            width: makeRandomPrintableArea().width,
         };
 
         // Exercise + verify
@@ -27,12 +27,12 @@ describe("Hash.printableArea uniquely identifies a printable area", () => {
         );
     });
 
-    it("case: different bottomRightCorner, different hashes", () => {
+    it("case: different height, different hashes", () => {
         // Setup
         const printableArea0: PrintableArea = makeRandomPrintableArea();
         const printableArea1: PrintableArea = {
             ...printableArea0,
-            bottomRightCorner: makeRandomPoint(),
+            height: makeRandomPrintableArea().height,
         };
 
         // Exercise + verify
@@ -41,21 +41,7 @@ describe("Hash.printableArea uniquely identifies a printable area", () => {
         );
     });
 
-    it("case: inverted corners, different hashes", () => {
-        // Setup
-        const printableArea0: PrintableArea = makeRandomPrintableArea();
-        const printableArea1: PrintableArea = {
-            topLeftCorner: printableArea0.bottomRightCorner,
-            bottomRightCorner: printableArea0.topLeftCorner,
-        };
-
-        // Exercise + verify
-        expect(Hash.printableArea(printableArea0)).not.toEqual(
-            Hash.printableArea(printableArea1)
-        );
-    });
-
-    it("case: same corners, same hashes", () => {
+    it("case: same width and height, same hashes", () => {
         // Setup
         const printableArea0: PrintableArea = makeRandomPrintableArea();
         const printableArea1: PrintableArea = { ...printableArea0 };

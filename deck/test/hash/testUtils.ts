@@ -1,5 +1,5 @@
 import { random, range } from "lodash";
-import { ExcalidrawElement, Point, PrintableArea, Slide } from "../../src";
+import { ExcalidrawElement, PrintableArea, Slide } from "../../src";
 
 export function makeRandomExcalidrawElement(): ExcalidrawElement {
     return { id: makeRandomId(), versionNonce: makeRandomNonce() };
@@ -23,14 +23,7 @@ export function makeRandomSlides(length = 10): Slide[] {
 }
 
 export function makeRandomPrintableArea(): PrintableArea {
-    return {
-        topLeftCorner: makeRandomPoint(),
-        bottomRightCorner: makeRandomPoint(),
-    };
-}
-
-export function makeRandomPoint(): Point {
-    return { x: makeRandomInteger(), y: makeRandomInteger() };
+    return { width: makeRandomInteger(), height: makeRandomInteger() };
 }
 
 function makeRandomId(): string {

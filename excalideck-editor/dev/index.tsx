@@ -1,15 +1,15 @@
 import { DeckOperations } from "@excalideck/deck";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
-import ExcalideckEditor from "../src";
+import { ExcalideckEditor } from "../src";
 import "./index.css";
 
 ReactDOM.render(
     <StrictMode>
         <ExcalideckEditor
             initialDeck={DeckOperations.makeEmptyDeck({
-                topLeftCorner: { x: 0, y: 0 },
-                bottomRightCorner: { x: 1500, y: 1000 },
+                width: 1500,
+                height: 1000,
             })}
             onDeckChange={(updatedDeck) => {
                 console.log("onDeckChange");

@@ -1,17 +1,17 @@
-import { Slide } from "@excalideck/deck";
+import { Deck, Slide } from "@excalideck/deck";
 import AddEmptySlideButton from "../AddEmptySlideButton";
 import SlideMiniatures from "../SlideMiniatures";
 import "./index.css";
 
 interface Props {
-    slides: Slide[];
+    deck: Deck;
     onAddEmptySlide: () => void;
     onMoveSlide: (fromIndex: number, toIndex: number) => void;
     selectedSlide: Slide;
     onSelectSlide: (slideId: string) => void;
 }
 export default function SlidesControl({
-    slides,
+    deck,
     onAddEmptySlide,
     onMoveSlide,
     selectedSlide,
@@ -20,7 +20,7 @@ export default function SlidesControl({
     return (
         <div className="SlidesControl">
             <SlideMiniatures
-                slides={slides}
+                deck={deck}
                 onMoveSlide={onMoveSlide}
                 selectedSlide={selectedSlide}
                 onSelectSlide={onSelectSlide}

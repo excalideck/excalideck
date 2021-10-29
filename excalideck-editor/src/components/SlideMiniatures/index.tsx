@@ -11,17 +11,17 @@ import {
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Slide } from "@excalideck/deck";
+import { Deck, Slide } from "@excalideck/deck";
 import SortableSlideMiniature from "../SortableSlideMiniature";
 
 interface Props {
-    slides: Slide[];
+    deck: Deck;
     onMoveSlide: (fromIndex: number, toIndex: number) => void;
     selectedSlide: Slide;
     onSelectSlide: (slideId: string) => void;
 }
 export default function SlidesMiniatures({
-    slides,
+    deck,
     onMoveSlide,
     selectedSlide,
     onSelectSlide,
@@ -32,6 +32,7 @@ export default function SlidesMiniatures({
             coordinateGetter: sortableKeyboardCoordinates,
         })
     );
+    const { slides } = deck;
     return (
         <DndContext
             sensors={sensors}
@@ -62,6 +63,7 @@ export default function SlidesMiniatures({
                     <SortableSlideMiniature
                         id={slide.id}
                         key={slide.id}
+                        deck={deck}
                         slide={slide}
                         slidePosition={index}
                         isSlideSelected={slide.id === selectedSlide.id}

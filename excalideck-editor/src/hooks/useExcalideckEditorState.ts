@@ -5,7 +5,7 @@ import {
     Hash,
     PrintableArea,
 } from "@excalideck/deck";
-import { Reducer, useEffect, useReducer } from "react";
+import { Reducer, useEffect, useReducer, useRef } from "react";
 import ExcalideckEditorState from "../entities/ExcalideckEditorState";
 import View from "../entities/View";
 import ExcalideckEditorStateOperations from "../ExcalideckEditorStateOperations";
@@ -21,11 +21,13 @@ export default function useExcalideckEditorState(
         deck: initialDeck,
         selectedSlideId: initialDeck.slides[0]!.id,
     });
+    const deckHashRef = useRef(Hash.deck(excalideckEditorState.deck));
 
-    const deckHash = Hash.deck(excalideckEditorState.deck);
     useEffect(() => {
-        onDeckChange(excalideckEditorState.deck);
-    }, [onDeckChange, deckHash]);
+        if (deckHashRef.current !== Hash.deck(excalideckEditorState.deck)) {
+            onDeckChange(excalideckEditorState.deck);
+        }
+    }, [onDeckChange, excalideckEditorState.deck]);
 
     return {
         activeView: excalideckEditorState.activeView,
@@ -62,7 +64,7 @@ export default function useExcalideckEditorState(
             shouldRenderWithCommonExcalidrawElements: boolean
         ) {
             dispatch([
-                "updateSlideShouldRender",
+                "updateSlideShouldRenderWithCommonExcalidrawElements",
                 slideId,
                 shouldRenderWithCommonExcalidrawElements,
             ]);

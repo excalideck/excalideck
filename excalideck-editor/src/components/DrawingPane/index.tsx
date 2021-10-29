@@ -24,6 +24,8 @@ export default function DrawingPane({
 }: Props) {
     return (
         <ExcalidrawElementsInput
+            // Force re-mount to update `initialValue`, as required by
+            // ExcalidrawElementsInput
             key={[
                 selectedSlide.id,
                 selectedSlide.shouldRenderWithCommonExcalidrawElements,
@@ -33,11 +35,13 @@ export default function DrawingPane({
             printableArea={deck.printableArea}
             initialValue={
                 activeView === View.Slides
-                    ? ExcalidrawElementUtils.getSlideExcalidrawElements(
+                    ? ExcalidrawElementUtils.getSlideExcalidrawElementsForExcalidrawInput(
                           deck,
                           selectedSlide.id
                       )
-                    : ExcalidrawElementUtils.getCommonExcalidrawElements(deck)
+                    : ExcalidrawElementUtils.getCommonExcalidrawElementsForExcalidrawInput(
+                          deck
+                      )
             }
             onChange={(updatedExcalidrawElements) => {
                 if (activeView === View.Slides) {

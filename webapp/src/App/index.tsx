@@ -1,5 +1,5 @@
 import { Deck } from "@excalideck/deck";
-import ExcalideckEditor from "@excalideck/excalideck-editor";
+import { ExcalideckEditor } from "@excalideck/excalideck-editor";
 import usePersistentDeck from "./hooks/usePersistentDeck";
 
 interface Props {

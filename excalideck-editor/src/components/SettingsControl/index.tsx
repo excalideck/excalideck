@@ -1,5 +1,5 @@
 import { PrintableArea } from "@excalideck/deck";
-import RectangleInput from "../RectangleInput";
+import PrintableAreaInput from "../PrintableAreaInput";
 import "./index.css";
 
 interface Props {
@@ -12,7 +12,7 @@ export default function SettingsControl({
 }: Props) {
     return (
         <div className="SettingsControl">
-            <RectangleInput
+            <PrintableAreaInput
                 label="Printable area"
                 value={printableArea}
                 onChange={onUpdatePrintableArea}

@@ -18,7 +18,9 @@ const ExcalidrawElementUtils = {
         );
     },
 
-    getCommonExcalidrawElements(deck: Deck): ExcalidrawElement[] {
+    getCommonExcalidrawElementsForExcalidrawInput(
+        deck: Deck
+    ): ExcalidrawElement[] {
         return [
             ...deck.commonExcalidrawElements,
             PrintableAreaUtils.getExcalidrawElement(deck.printableArea),
@@ -26,15 +28,16 @@ const ExcalidrawElementUtils = {
     },
 
     extractCommonExcalidrawElements(
-        /** They include common excalidraw elements and the printable area */
-        sourceExcalidrawElements: ExcalidrawElement[]
+        /** These include common excalidraw elements and the printable area */
+        excalidrawInputExcalidrawElements: ExcalidrawElement[]
     ): ExcalidrawElement[] {
-        return ExcalidrawElementUtils.removeByIds(sourceExcalidrawElements, [
-            PrintableAreaUtils.getExcalidrawElementId(),
-        ]);
+        return ExcalidrawElementUtils.removeByIds(
+            excalidrawInputExcalidrawElements,
+            [PrintableAreaUtils.getExcalidrawElementId()]
+        );
     },
 
-    getSlideExcalidrawElements(
+    getSlideExcalidrawElementsForExcalidrawInput(
         deck: Deck,
         slideId: string
     ): ExcalidrawElement[] {
@@ -49,14 +52,20 @@ const ExcalidrawElementUtils = {
     },
 
     extractSlideExcalidrawElements(
-        /** They include common excalidraw elements and the printable area */
-        sourceExcalidrawElements: ExcalidrawElement[],
+        /**
+         * These include common excalidraw elements (possibly) and the printable
+         * area
+         */
+        excalidrawInputExcalidrawElements: ExcalidrawElement[],
         commonExcalidrawElements: ExcalidrawElement[]
     ): ExcalidrawElement[] {
-        return ExcalidrawElementUtils.removeByIds(sourceExcalidrawElements, [
-            ...ExcalidrawElementUtils.getIds(commonExcalidrawElements),
-            PrintableAreaUtils.getExcalidrawElementId(),
-        ]);
+        return ExcalidrawElementUtils.removeByIds(
+            excalidrawInputExcalidrawElements,
+            [
+                ...ExcalidrawElementUtils.getIds(commonExcalidrawElements),
+                PrintableAreaUtils.getExcalidrawElementId(),
+            ]
+        );
     },
 };
 export default ExcalidrawElementUtils;

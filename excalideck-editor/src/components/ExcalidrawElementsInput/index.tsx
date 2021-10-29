@@ -2,48 +2,57 @@ import { ExcalidrawElement, Hash, PrintableArea } from "@excalideck/deck";
 import Excalidraw from "@excalidraw/excalidraw";
 import { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types/types";
 import { cloneDeep } from "lodash";
-import { useEffect, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import PrintableAreaUtils from "../../utils/PrintableAreaUtils";
 import "./index.css";
 
 // # Notes on the Excalidraw component
 //
-// The Excalidraw component is uncontrolled, so changing the
-// `Excalidraw.initialData` prop doesn't affect the component and will not
-// trigger a re-render.
+// 1. the Excalidraw component is uncontrolled, so changing the
+//    `Excalidraw.initialData` prop doesn't affect the component and will not
+//    trigger a re-render
 //
-// On the other hand, changing the `Excalidraw.onChange` prop _does_ trigger a
-// re-render, and every time the component renders, it fires a change event
-// (i.e. it calls the `Excalidraw.onChange` prop). This means that we need to
-// avoid changing the `Excalidraw.onChange` prop after every change event, else
-// we get an infinite render loop. Hence the use of `useCallback`.
+// 2. on the other hand, changing the `Excalidraw.onChange` prop _does_ trigger
+//    a re-render, and every time the component renders, it fires a change event
+//    (i.e. it calls the `Excalidraw.onChange` prop). This makes using the prop
+//    a bit tricky: if we don't memoize the `Excalidraw.onChange` prop and
+//    change it after every change event, we get an infinite render loop
 //
-// The Excalidraw component fires change events whenever either its `elements`
-// or its `appState` change. This means that:
+// 3. the Excalidraw component fires change events whenever either its
+//    `elements` or its `appState` change. This means that:
 //
-// - we only need to call `ExcalidrawElementsInput.onChange` when the `elements`
-//   have changed, hence the (hash) equality check
+//   - if we're only interested in changes to `elements`, in the body of the
+//     `Excalidraw.onChange` callback we need to figure out if they actually did
+//     change (this is made more difficult by the fact that the `elements` array
+//     gets mutated, so we can't use a simple strict-equality check)
 //
-// - while the user is interacting with the component, change events are fired
-//   every few milliseconds. We therefore `debounce` the callback to avoid
-//   performing expensive computations on every little change
+//   - while the user is interacting with the component, change events are fired
+//     every few milliseconds. Hence, the `Excalidraw.onChange` callback
+//     probably needs to be debounced, to avoid performing too many expensive
+//     computations and slowing down the app
 //
-// The Excalidraw component mutates its element objects. This means that:
+// 4. the Excalidraw component mutates its element objects. This means that:
 //
-// - we need to make a copy of the elements before passing them to / taking them
-//   from outer components, to give outer components the guarantee that:
+//   - we need to make a copy of the elements before passing-them-to /
+//     taking-them-from outer components, to give outer components the guarantee
+//     that:
 //
-//   - the coming-in `ExcalidrawElementsInput.initialValue` prop will not be
-//     mutated
+//     - the coming-in `ExcalidrawElementsInput.initialValue` prop will not be
+//       mutated
 //
-//   - given two calls to the `ExcalidrawElementsInput.onChange` prop, the two
-//     going-out `newValue` arguments won't be strictly-equal if they are
-//     "functionally different"
+//     - given two calls to the `ExcalidrawElementsInput.onChange` prop, the two
+//       going-out `newValue` arguments won't be strictly-equal if they are
+//       "functionally different"
 //
-// - when comparing elements passed to the `Excalidraw.onChange` callback, we
-//   can't use strict-equality, hence the use of a hashing function
+//   - when comparing elements gotten from
+//     `Excalidraw.getSceneElementsIncludingDeleted`, we can't use a simple
+//     strict-equality check (hence the use of a hashing function)
 //
 // # Notes on the ExcalidrawElementsInput component
+//
+// Given the difficulties (points 2. and 3. above) of using
+// `Excalidraw.onChange`, to get changes out of the Excalidraw component we
+// opted for a polling approach.
 //
 // As documented below, users of the ExcalidrawElementsInput component that want
 // changes to the `ExcalidrawElementsInput.initialValue` prop to be reflected in
@@ -77,7 +86,26 @@ export default function ExcalidrawElementsInput({
     onChange,
 }: Props) {
     const excalidrawRef = useRef<ExcalidrawImperativeAPI>(null);
-    const previousHashRef = useRef<number>();
+
+    const initialData = useMemo(
+        () => ({
+            elements: cloneDeep(initialValue as any),
+            appState: {
+                zoom: PrintableAreaUtils.getFittingZoom(printableArea),
+            },
+        }),
+        // As stated above, we ignore changes to `initialValue`
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        undefined
+    );
+
+    const initialHash = useMemo(
+        () => Hash.excalidrawElements(initialValue),
+        // As stated above, we ignore changes to `initialValue`
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        undefined
+    );
+    const previousHashRef = useRef<number>(initialHash);
 
     useEffect(() => {
         const intervalId = setInterval(() => {
@@ -99,12 +127,7 @@ export default function ExcalidrawElementsInput({
         <div className="ExcalidrawElementsInput">
             <Excalidraw
                 ref={excalidrawRef}
-                initialData={{
-                    elements: initialValue as any,
-                    appState: {
-                        zoom: PrintableAreaUtils.getFittingZoom(printableArea),
-                    },
-                }}
+                initialData={initialData}
                 UIOptions={{
                     canvasActions: {
                         changeViewBackgroundColor: true,

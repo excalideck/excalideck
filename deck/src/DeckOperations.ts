@@ -2,6 +2,7 @@ import Deck from "./entities/Deck";
 import ExcalidrawElement from "./entities/ExcalidrawElement";
 import PrintableArea from "./entities/PrintableArea";
 import Slide from "./entities/Slide";
+import PrintableAreaNotValid from "./errors/PrintableAreaNotValid";
 import SlideOperations from "./SlideOperations";
 
 const DeckOperations = {
@@ -14,6 +15,9 @@ const DeckOperations = {
     },
 
     updatePrintableArea(deck: Deck, printableArea: PrintableArea): Deck {
+        if (printableArea.width <= 0 || printableArea.height <= 0) {
+            throw new PrintableAreaNotValid(printableArea);
+        }
         return { ...deck, printableArea };
     },
 

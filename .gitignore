@@ -1,4 +1,4 @@
-# npm & yarn
+# yarn
 .yarn/*
 !.yarn/cache
 !.yarn/patches

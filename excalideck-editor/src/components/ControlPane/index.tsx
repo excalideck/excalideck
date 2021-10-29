@@ -57,7 +57,7 @@ export default function ControlPane({
                 <ViewInput value={activeView} onChange={onActivateView} />
                 {activeView === View.Slides ? (
                     <SlidesControl
-                        slides={deck.slides}
+                        deck={deck}
                         onAddEmptySlide={onAddEmptySlide}
                         onMoveSlide={onMoveSlide}
                         selectedSlide={selectedSlide}

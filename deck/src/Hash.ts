@@ -14,18 +14,13 @@ const Hash = {
     },
 
     printableArea(printableArea: PrintableArea): number {
-        return (
-            2 * printableArea.topLeftCorner.x +
-            3 * printableArea.topLeftCorner.y +
-            5 * printableArea.bottomRightCorner.x +
-            7 * printableArea.bottomRightCorner.y
-        );
+        return 2 * printableArea.width + 3 * printableArea.height;
     },
 
     slide(slide: Slide): number {
         return (
-            2 * (slide.shouldRender ? 0 : 1) +
-            3 * (slide.shouldRenderWithCommonExcalidrawElements ? 0 : 1) +
+            2 * (slide.shouldRender ? 3 : 5) +
+            7 * (slide.shouldRenderWithCommonExcalidrawElements ? 9 : 11) +
             Hash.excalidrawElements(slide.excalidrawElements)
         );
     },

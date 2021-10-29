@@ -7,10 +7,7 @@ describe("DeckOperations.deleteSlide", () => {
         // Setup
         const deck: Deck = {
             commonExcalidrawElements: [],
-            printableArea: {
-                topLeftCorner: { x: 0, y: 0 },
-                bottomRightCorner: { x: 100, y: 100 },
-            },
+            printableArea: { width: 100, height: 100 },
             slides: makeSlides(["0"]),
         };
 
@@ -24,10 +21,7 @@ describe("DeckOperations.deleteSlide", () => {
         // Setup
         const deck: Deck = {
             commonExcalidrawElements: [],
-            printableArea: {
-                topLeftCorner: { x: 0, y: 0 },
-                bottomRightCorner: { x: 100, y: 100 },
-            },
+            printableArea: { width: 100, height: 100 },
             slides: makeSlides(["0", "1"]),
         };
 
@@ -42,10 +36,7 @@ describe("DeckOperations.deleteSlide", () => {
         // Setup
         const deck: Deck = {
             commonExcalidrawElements: [],
-            printableArea: {
-                topLeftCorner: { x: 0, y: 0 },
-                bottomRightCorner: { x: 100, y: 100 },
-            },
+            printableArea: { width: 100, height: 100 },
             slides: makeSlides(["0"]),
         };
 
