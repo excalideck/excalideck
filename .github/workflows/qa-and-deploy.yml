@@ -16,10 +16,10 @@ jobs:
         run: yarn check-formatting
       - name: Lint
         run: yarn lint
-      - name: Test
-        run: yarn test
       - name: Build
         run: yarn build
+      - name: Test
+        run: yarn test
 
   deploy:
     needs: qa
