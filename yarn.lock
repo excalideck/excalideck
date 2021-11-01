@@ -573,7 +573,6 @@ __metadata:
     clsx: ^1.1.1
     jest: ^27.3.1
     lodash: ^4.17.21
-    nanoid: ^3.1.30
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -591,32 +590,28 @@ __metadata:
   resolution: "@excalideck/excalideck-file@workspace:packages/excalideck-file"
   dependencies:
     "@excalideck/deck": "workspace:*"
-    "@types/jest": ^27.0.2
-    jest: ^27.3.1
-    ts-jest: ^27.0.7
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
 
-"@excalideck/persistent-excalideck-editor@workspace:packages/persistent-excalideck-editor":
+"@excalideck/persistent-excalideck-editor@workspace:*, @excalideck/persistent-excalideck-editor@workspace:packages/persistent-excalideck-editor":
   version: 0.0.0-use.local
   resolution: "@excalideck/persistent-excalideck-editor@workspace:packages/persistent-excalideck-editor"
   dependencies:
+    "@dwelle/browser-fs-access": ^0.21.3
+    "@excalideck/deck": "workspace:*"
     "@excalideck/excalideck-editor": "workspace:*"
+    "@excalideck/excalideck-file": "workspace:*"
     "@parcel/packager-ts": ^2.0.0
     "@parcel/transformer-typescript-types": ^2.0.0
-    "@types/jest": ^27.0.2
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
-    jest: ^27.3.1
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    ts-jest: ^27.0.7
     typescript: ^4.4.4
   peerDependencies:
     react: ^17.0.2
-    react-dom: ^17.0.2
   languageName: unknown
   linkType: soft
 
@@ -647,7 +642,6 @@ __metadata:
     "@excalidraw/excalidraw": ^0.10.0
     "@types/lodash": ^4.14.176
     lodash: ^4.17.21
-    parcel: ^2.0.0
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -656,20 +650,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@excalideck/webapp@workspace:packages/webapp"
   dependencies:
-    "@dwelle/browser-fs-access": ^0.21.3
     "@excalideck/deck": "workspace:*"
-    "@excalideck/excalideck-editor": "workspace:*"
-    "@excalideck/excalideck-file": "workspace:*"
+    "@excalideck/persistent-excalideck-editor": "workspace:*"
     "@parcel/packager-raw-url": ^2.0.0
     "@parcel/transformer-webmanifest": ^2.0.0
-    "@types/jest": ^27.0.2
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
-    jest: ^27.3.1
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
-    ts-jest: ^27.0.7
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
