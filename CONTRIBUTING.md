@@ -26,68 +26,17 @@ From the project's root directory, you can run the following scripts:
 
 ## Packages
 
-### `@excalideck/deck`
-
-Contains the definitions of the core interfaces (`Deck`, `Slide`, etc) and
-functions to operate on them.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/deck test`: runs unit tests (add `--watch` for the
-  interactive mode)
-- `yarn workspace @excalideck/deck build`: builds the package
-
-### `@excalideck/excalideck-editor`
-
-Contains the `ExcalideckEditor` component.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/excalideck-editor start`: starts a development
-  server to interactively develop the component
-- `yarn workspace @excalideck/excalideck-editor test`: runs unit tests (add
-  `--watch` for the interactive mode)
-- `yarn workspace @excalideck/excalideck-editor build`: builds the package
-
-### `@excalideck/persistent-excalideck-editor`
-
-Contains the `PersistentExcalideckEditor` component, that builds upon the
-`ExcalideckEditor` component, adding file-saving capabilities.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/persistent-excalideck-editor start`: starts a
-  development server to interactively develop the component
-- `yarn workspace @excalideck/persistent-excalideck-editor build`: builds the
-  package
-
-### `@excalideck/excalideck-file`
-
-Contains the `ExcalideckFile` object, used to save and load Excalideck files.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/excalideck-file build`: builds the package
-
-### `@excalideck/slide-renderers`
-
-Contains renderers to render slides in different formats.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/slide-renderers build`: builds the package
-
-### `@excalideck/webapp`
-
-Contains the Excalideck webapp.
-
-#### Scripts:
-
-- `yarn workspace @excalideck/excalideck-editor start`: starts a development
-  server to interactively develop the app
-- `yarn workspace @excalideck/excalideck-editor test`: runs unit tests (add
-  `--watch` for the interactive mode)
-- `yarn workspace @excalideck/excalideck-editor build`: builds the app
+- `@excalideck/deck`: contains the definitions of the core interfaces (`Deck`,
+  `Slide`, etc) and functions to operate on them
+- `@excalideck/excalideck-editor`: contains the `ExcalideckEditor` component
+- `@excalideck/persistent-excalideck-editor`: contains the
+  `PersistentExcalideckEditor` component, that builds upon the
+  `ExcalideckEditor` component, adding file-saving capabilities
+- `@excalideck/excalideck-file`: contains the `ExcalideckFile` object, used to
+  save and load Excalideck files
+- `@excalideck/slide-renderers`: contains renderers to render slides in
+  different formats
+- `@excalideck/webapp`: contains the Excalideck webapp
 
 ## Conventions
 
