@@ -13,6 +13,8 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@excalideck/deck": "workspace:*"
+    "@excalideck/deck": "workspace:*",
+    "@excalideck/slide-renderers": "workspace:*",
+    "pdf-lib": "^1.17.0"
   }
 }

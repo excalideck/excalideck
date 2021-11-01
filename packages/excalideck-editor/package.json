@@ -26,7 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
-    "react-use": "^17.3.1"
+    "use-debounce": "^7.0.0"
   },
   "peerDependencies": {
     "react": "^17.0.2",

@@ -1,5 +1,9 @@
 import { Deck, DeckOperations } from "@excalideck/deck";
+import { pngBlobSlideRenderer } from "@excalideck/slide-renderers";
+import { PDFDocument, PDFTextField } from "pdf-lib";
 import ExcalideckFileNotValid from "./errors/ExcalideckFileNotValid";
+
+const PDF_FIELD_NAME = "excalideckDeckJson";
 
 const ExcalideckFile = {
     extension: ".pdf",
@@ -7,22 +11,56 @@ const ExcalideckFile = {
     mimeType: "application/vdn.excalideck+pdf",
 
     async getDeckFromFile(file: File): Promise<Deck> {
-        // TODO
-        const fileText = await file.text();
+        const deckPDFDocument = await PDFDocument.load(
+            await file.arrayBuffer()
+        );
+
+        const deckJSONString = (
+            deckPDFDocument.getForm().getField(PDF_FIELD_NAME) as PDFTextField
+        ).getText();
+
+        if (!deckJSONString) {
+            throw new ExcalideckFileNotValid();
+        }
+
         let deck: unknown;
         try {
-            deck = JSON.parse(fileText);
+            deck = JSON.parse(deckJSONString);
         } catch {
             throw new ExcalideckFileNotValid();
         }
+
         return DeckOperations.parse(deck);
     },
 
+    // TODO: increase output quality
     async getBlobFromDeck(deck: Deck): Promise<Blob> {
-        // TODO
-        return new Blob([JSON.stringify(deck)], {
-            type: ExcalideckFile.mimeType,
-        });
+        const { width, height } = deck.printableArea;
+
+        const deckPDFDocument = await PDFDocument.create();
+        for (const slide of deck.slides) {
+            if (!slide.shouldRender) {
+                continue;
+            }
+            const slidePage = deckPDFDocument.addPage([width, height]);
+            const slidePngBlob = await pngBlobSlideRenderer.renderSlide(
+                deck,
+                slide.id
+            );
+            const slidePngImage = await deckPDFDocument.embedPng(
+                await slidePngBlob.arrayBuffer()
+            );
+            slidePage.drawImage(slidePngImage, { x: 0, y: 0, width, height });
+        }
+
+        const deckJSONString = JSON.stringify(deck);
+        deckPDFDocument
+            .getForm()
+            .createTextField(PDF_FIELD_NAME)
+            .setText(deckJSONString);
+
+        const deckPdf = await deckPDFDocument.save();
+        return new Blob([deckPdf], { type: ExcalideckFile.mimeType });
     },
 };
 export default ExcalideckFile;
