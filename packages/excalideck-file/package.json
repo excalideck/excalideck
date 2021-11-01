@@ -1,0 +1,18 @@
+{
+  "name": "@excalideck/excalideck-file",
+  "version": "0.0.0",
+  "main": "build/src/index.js",
+  "files": [
+    "build/src/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf build",
+    "build": "yarn clean && tsc"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  },
+  "dependencies": {
+    "@excalideck/deck": "workspace:*"
+  }
+}

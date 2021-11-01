@@ -535,9 +535,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@excalideck/deck@workspace:*, @excalideck/deck@workspace:deck":
+"@excalideck/deck@workspace:*, @excalideck/deck@workspace:packages/deck":
   version: 0.0.0-use.local
-  resolution: "@excalideck/deck@workspace:deck"
+  resolution: "@excalideck/deck@workspace:packages/deck"
   dependencies:
     "@types/jest": ^27.0.2
     "@types/lodash": ^4.14.176
@@ -546,12 +546,13 @@ __metadata:
     nanoid: ^3.1.30
     ts-jest: ^27.0.7
     typescript: ^4.4.4
+    zod: ^3.11.6
   languageName: unknown
   linkType: soft
 
-"@excalideck/excalideck-editor@workspace:*, @excalideck/excalideck-editor@workspace:excalideck-editor":
+"@excalideck/excalideck-editor@workspace:*, @excalideck/excalideck-editor@workspace:packages/excalideck-editor":
   version: 0.0.0-use.local
-  resolution: "@excalideck/excalideck-editor@workspace:excalideck-editor"
+  resolution: "@excalideck/excalideck-editor@workspace:packages/excalideck-editor"
   dependencies:
     "@dnd-kit/core": ^4.0.1
     "@dnd-kit/sortable": ^5.0.0
@@ -585,6 +586,40 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@excalideck/excalideck-file@workspace:*, @excalideck/excalideck-file@workspace:packages/excalideck-file":
+  version: 0.0.0-use.local
+  resolution: "@excalideck/excalideck-file@workspace:packages/excalideck-file"
+  dependencies:
+    "@excalideck/deck": "workspace:*"
+    "@types/jest": ^27.0.2
+    jest: ^27.3.1
+    ts-jest: ^27.0.7
+    typescript: ^4.4.4
+  languageName: unknown
+  linkType: soft
+
+"@excalideck/persistent-excalideck-editor@workspace:packages/persistent-excalideck-editor":
+  version: 0.0.0-use.local
+  resolution: "@excalideck/persistent-excalideck-editor@workspace:packages/persistent-excalideck-editor"
+  dependencies:
+    "@excalideck/excalideck-editor": "workspace:*"
+    "@parcel/packager-ts": ^2.0.0
+    "@parcel/transformer-typescript-types": ^2.0.0
+    "@types/jest": ^27.0.2
+    "@types/react": ^17.0.33
+    "@types/react-dom": ^17.0.10
+    jest: ^27.3.1
+    parcel: ^2.0.0
+    react: ^17.0.2
+    react-dom: ^17.0.2
+    ts-jest: ^27.0.7
+    typescript: ^4.4.4
+  peerDependencies:
+    react: ^17.0.2
+    react-dom: ^17.0.2
+  languageName: unknown
+  linkType: soft
+
 "@excalideck/root@workspace:.":
   version: 0.0.0-use.local
   resolution: "@excalideck/root@workspace:."
@@ -604,9 +639,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@excalideck/slide-renderers@workspace:*, @excalideck/slide-renderers@workspace:slide-renderers":
+"@excalideck/slide-renderers@workspace:*, @excalideck/slide-renderers@workspace:packages/slide-renderers":
   version: 0.0.0-use.local
-  resolution: "@excalideck/slide-renderers@workspace:slide-renderers"
+  resolution: "@excalideck/slide-renderers@workspace:packages/slide-renderers"
   dependencies:
     "@excalideck/deck": "workspace:*"
     "@excalidraw/excalidraw": ^0.10.0
@@ -617,13 +652,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@excalideck/webapp@workspace:webapp":
+"@excalideck/webapp@workspace:packages/webapp":
   version: 0.0.0-use.local
-  resolution: "@excalideck/webapp@workspace:webapp"
+  resolution: "@excalideck/webapp@workspace:packages/webapp"
   dependencies:
     "@dwelle/browser-fs-access": ^0.21.3
     "@excalideck/deck": "workspace:*"
     "@excalideck/excalideck-editor": "workspace:*"
+    "@excalideck/excalideck-file": "workspace:*"
     "@parcel/packager-raw-url": ^2.0.0
     "@parcel/transformer-webmanifest": ^2.0.0
     "@types/jest": ^27.0.2
@@ -10435,5 +10471,12 @@ __metadata:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: b14afbb51e3251a204d81937c86a7e9d4bdbf9a2bcee38226c900d00f522969ab675703bee2a6f99f8e20103f608382936034e64d921b74df82b63c07c5e8f59
+  languageName: node
+  linkType: hard
+
+"zod@npm:^3.11.6":
+  version: 3.11.6
+  resolution: "zod@npm:3.11.6"
+  checksum: 044ac416450f179a0c88240f27849d2886c777cebade42df10e5f04125b0265cec82d9bd741a7dcb11796b2ea88b32c86be7d36932a4bed6af57002560359db1
   languageName: node
   linkType: hard

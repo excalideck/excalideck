@@ -3,10 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "deck",
-    "excalideck-editor",
-    "slide-renderers",
-    "webapp"
+    "packages/*"
   ],
   "scripts": {
     "build": "yarn workspaces foreach run build",
@@ -14,8 +11,8 @@
     "lint": "eslint . --ext .ts,.tsx --ignore-path .prettierignore",
     "check-formatting": "prettier --list-different .",
     "fix-formatting": "prettier --write .",
-    "deploy:bundle": "staticdeploy bundle --config webapp/staticdeploy.config.js",
-    "deploy:entrypoint": "staticdeploy deploy --config webapp/staticdeploy.config.js",
+    "deploy:bundle": "staticdeploy bundle --config packages/webapp/staticdeploy.config.js",
+    "deploy:entrypoint": "staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
     "deploy:purge": "./scripts/purge-cdn-cache.sh"
   },
   "devDependencies": {

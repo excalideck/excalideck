@@ -1,0 +1,35 @@
+.FileSavingStateIndicator {
+    margin-top: 0.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.FileSavingStateIndicator .Dot {
+    width: 2.5rem;
+    margin-right: 0.25rem;
+    text-align: center;
+    font-size: 64px;
+    line-height: 0px;
+}
+.FileSavingStateIndicator .Dot.AllChangesSaved {
+    color: var(--green);
+}
+.FileSavingStateIndicator .Dot.UnsavedChanges {
+    color: var(--dark-gray);
+}
+.FileSavingStateIndicator .Dot.SavingChanges {
+    color: var(--orange);
+}
+
+.FileSavingStateIndicator .FileName {
+    color: var(--dark-gray);
+}
+.FileSavingStateIndicator .FileName label {
+    font-size: 0.75rem;
+}
+.FileSavingStateIndicator .FileName div {
+    width: 142px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
