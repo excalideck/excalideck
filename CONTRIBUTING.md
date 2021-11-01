@@ -17,6 +17,7 @@ install packages.
 
 From the project's root directory, you can run the following scripts:
 
+- `yarn lint`: lints the code (with eslint)
 - `yarn check-formatting`: checks code formatting
 - `yarn fix-formatting`: fixes code formatting
 - `yarn test`: runs each workspace's tests
@@ -48,6 +49,34 @@ Contains the `ExcalideckEditor` component.
   `--watch` for the interactive mode)
 - `yarn workspace @excalideck/excalideck-editor build`: builds the package
 
+### `@excalideck/persistent-excalideck-editor`
+
+Contains the `PersistentExcalideckEditor` component, that builds upon the
+`ExcalideckEditor` component, adding file-saving capabilities.
+
+#### Scripts:
+
+- `yarn workspace @excalideck/persistent-excalideck-editor start`: starts a
+  development server to interactively develop the component
+- `yarn workspace @excalideck/persistent-excalideck-editor build`: builds the
+  package
+
+### `@excalideck/excalideck-file`
+
+Contains the `ExcalideckFile` object, used to save and load Excalideck files.
+
+#### Scripts:
+
+- `yarn workspace @excalideck/excalideck-file build`: builds the package
+
+### `@excalideck/slide-renderers`
+
+Contains renderers to render slides in different formats.
+
+#### Scripts:
+
+- `yarn workspace @excalideck/slide-renderers build`: builds the package
+
 ### `@excalideck/webapp`
 
 Contains the Excalideck webapp.
@@ -62,10 +91,9 @@ Contains the Excalideck webapp.
 
 ## Conventions
 
-- [prettier](https://prettier.io) is used to enforce code formatting. You can
-  fix code formatting by running `yarn fix-formatting` from the project's root
-  directory, though installing the prettier extension for your editor of choice
-  is highly recommended
+- [prettier](https://prettier.io) is used to enforce code formatting
+- [eslint](https://eslint.org/) is used to enforce some common coding best
+  practices
 
 ## CI workflow
 
