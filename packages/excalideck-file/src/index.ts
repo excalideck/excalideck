@@ -1,6 +1,6 @@
 import { Deck, DeckOperations } from "@excalideck/deck";
 import { pngBlobSlideRenderer } from "@excalideck/slide-renderers";
-import { PDFDocument, PDFTextField } from "pdf-lib";
+import type { PDFTextField } from "pdf-lib";
 import ExcalideckFileNotValid from "./errors/ExcalideckFileNotValid";
 
 const PDF_FIELD_NAME = "excalideckDeckJson";
@@ -11,6 +11,7 @@ const ExcalideckFile = {
     mimeType: "application/vdn.excalideck+pdf",
 
     async getDeckFromFile(file: File): Promise<Deck> {
+        const { PDFDocument } = await import("pdf-lib");
         const deckPDFDocument = await PDFDocument.load(
             await file.arrayBuffer()
         );
@@ -37,6 +38,7 @@ const ExcalideckFile = {
     async getBlobFromDeck(deck: Deck): Promise<Blob> {
         const { width, height } = deck.printableArea;
 
+        const { PDFDocument } = await import("pdf-lib");
         const deckPDFDocument = await PDFDocument.create();
         for (const slide of deck.slides) {
             if (!slide.shouldRender) {
