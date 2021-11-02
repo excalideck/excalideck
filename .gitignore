@@ -1,4 +1,4 @@
-# npm & yarn
+# yarn
 .yarn/*
 !.yarn/cache
 !.yarn/patches
@@ -6,12 +6,12 @@
 !.yarn/releases
 !.yarn/sdks
 !.yarn/versions
+node_modules
 
 # Build output
 build
-## Some modules (like babel-loader) store their cache files in
-## node_modules/.cache
-node_modules
+dist
+.parcel-cache
 
 # Tests
 coverage
@@ -25,3 +25,4 @@ coverage
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+.vscode

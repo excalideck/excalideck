@@ -3,21 +3,31 @@
   "version": "0.0.0",
   "private": true,
   "workspaces": [
-    "webapp"
+    "packages/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach run build",
-    "test": "yarn workspaces foreach run test",
+    "build": "yarn workspaces foreach --topological-dev --verbose run build",
+    "test": "yarn workspaces foreach --topological-dev --verbose run test",
+    "lint": "eslint . --ext .ts,.tsx --ignore-path .prettierignore",
     "check-formatting": "prettier --list-different .",
     "fix-formatting": "prettier --write .",
-    "deploy:bundle": "staticdeploy bundle --config webapp/staticdeploy.config.js",
-    "deploy:entrypoint": "staticdeploy deploy --config webapp/staticdeploy.config.js",
+    "deploy:bundle": "staticdeploy bundle --config packages/webapp/staticdeploy.config.js",
+    "deploy:entrypoint": "staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
     "deploy:purge": "./scripts/purge-cdn-cache.sh"
   },
   "devDependencies": {
     "@staticdeploy/cli": "^0.15.4",
+    "@typescript-eslint/eslint-plugin": "^5.2.0",
+    "@typescript-eslint/parser": "^5.2.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-jest": "^25.2.2",
+    "eslint-plugin-jsx-a11y": "^6.4.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.4.1",
+    "prettier-plugin-organize-imports": "^2.3.4",
+    "prettier-plugin-sh": "^0.7.1",
     "typescript": "^4.4.4"
   },
-  "packageManager": "yarn@3.0.2"
+  "packageManager": "yarn@3.1.0"
 }

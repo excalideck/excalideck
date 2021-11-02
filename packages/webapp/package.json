@@ -1,0 +1,33 @@
+{
+  "name": "@excalideck/webapp",
+  "version": "0.0.0",
+  "targets": {
+    "default": {
+      "source": "src/index.html",
+      "distDir": "build",
+      "publicUrl": "."
+    }
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "scripts": {
+    "clean": "rm -rf build dist",
+    "build:excalidraw-assets": "cp -R ../../node_modules/@excalidraw/excalidraw/dist/excalidraw-assets build/excalidraw-assets",
+    "build:parcel": "parcel build --no-autoinstall",
+    "build": "yarn clean && yarn build:parcel && yarn build:excalidraw-assets",
+    "start": "parcel --no-autoinstall"
+  },
+  "dependencies": {
+    "@excalideck/deck": "workspace:*",
+    "@excalideck/persistent-excalideck-editor": "workspace:*",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@parcel/packager-raw-url": "^2.0.0",
+    "@parcel/transformer-webmanifest": "^2.0.0",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "parcel": "^2.0.0",
+    "typescript": "^4.4.4"
+  }
+}

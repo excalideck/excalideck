@@ -1,0 +1,24 @@
+{
+  "extends": "../../tsconfig.common.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Language and Environment
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    // Modules
+    "module": "ESNext",
+    "jsx": "react-jsx",
+
+    // Emit
+    "noEmit": true,
+
+    // JavaScript support
+    "allowJs": true,
+
+    // Interop Constraints
+    "isolatedModules": true,
+
+    // Completeness
+    "skipLibCheck": true
+  }
+}

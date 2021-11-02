@@ -1,0 +1,15 @@
+{
+  "extends": "../../tsconfig.common.json",
+  "include": ["src/**/*"],
+  "compilerOptions": {
+    // Language and Environment
+    "lib": ["dom", "dom.iterable", "esnext"],
+
+    // Emit
+    "outDir": "build",
+    "rootDir": ".",
+
+    // Completeness
+    "skipLibCheck": true
+  }
+}

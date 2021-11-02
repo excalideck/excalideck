@@ -1,0 +1,10 @@
+html,
+body,
+#root {
+    margin: 0;
+    height: 100vh;
+    width: 100vw;
+    --ui-font: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI, Roboto,
+        Helvetica, Arial, sans-serif;
+    font-family: var(--ui-font);
+}

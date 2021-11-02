@@ -1,9 +1,15 @@
 # yarn
 .yarn/*
 .pnp.*
+node_modules
 
 # Output files and directories
+build
 dist
-dist-ssr
-*.local
-.vite-cache
+.parcel-cache
+
+# Tests
+coverage
+
+# Misc
+.vscode

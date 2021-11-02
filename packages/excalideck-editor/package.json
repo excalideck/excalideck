@@ -1,0 +1,49 @@
+{
+  "name": "@excalideck/excalideck-editor",
+  "version": "0.0.0",
+  "source": "src/index.ts",
+  "main": "build/index.js",
+  "types": "build/index.d.ts",
+  "files": [
+    "build/**/*"
+  ],
+  "scripts": {
+    "clean": "rm -rf build dist",
+    "build": "yarn clean && parcel build --no-autoinstall",
+    "start": "parcel dev/index.html --no-autoinstall",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@dnd-kit/core": "^4.0.1",
+    "@dnd-kit/sortable": "^5.0.0",
+    "@dnd-kit/utilities": "^3.0.0",
+    "@excalideck/deck": "workspace:*",
+    "@excalideck/slide-renderers": "workspace:*",
+    "@excalidraw/excalidraw": "^0.10.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.36",
+    "@fortawesome/free-regular-svg-icons": "^5.15.4",
+    "@fortawesome/free-solid-svg-icons": "^5.15.4",
+    "@fortawesome/react-fontawesome": "^0.1.16",
+    "clsx": "^1.1.1",
+    "lodash": "^4.17.21",
+    "use-debounce": "^7.0.0"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@parcel/packager-ts": "^2.0.0",
+    "@parcel/transformer-typescript-types": "^2.0.0",
+    "@types/jest": "^27.0.2",
+    "@types/lodash": "^4.14.176",
+    "@types/react": "^17.0.33",
+    "@types/react-dom": "^17.0.10",
+    "jest": "^27.3.1",
+    "parcel": "^2.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.4.4"
+  }
+}
