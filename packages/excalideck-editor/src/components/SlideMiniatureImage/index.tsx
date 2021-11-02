@@ -16,7 +16,7 @@ export default function SlideMiniatureImage({
 }: Props) {
     const [imageSrc, setImageSrc] = useState<string | null>(null);
 
-    // Re-render the image at most once every 500 ms
+    // Re-render the image at most once every X ms
     const [{ deck: debouncedDeck, slide: debouncedSlide }] = useDebounce(
         { deck, slide },
         500,
@@ -34,7 +34,6 @@ export default function SlideMiniatureImage({
         <img
             className="SlideMiniatureImage"
             alt={`Slide ${slidePosition}`}
-            key={imageSrc}
             src={imageSrc}
             onLoad={() => URL.revokeObjectURL(imageSrc)}
         />
