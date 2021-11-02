@@ -1,6 +1,5 @@
-import { Deck, DeckOperations } from "@excalideck/deck";
+const APP_CONFIG: { [key: string]: string } = (window as any).APP_CONFIG ?? {};
 
-export const initialDeck: Deck = DeckOperations.makeEmptyDeck({
-    width: 1500,
-    height: 1000,
-});
+export default {
+    isHomepage: APP_CONFIG["IS_HOMEPAGE"] === "true",
+};

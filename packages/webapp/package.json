@@ -11,7 +11,9 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean": "rm -rf build dist",
-    "build": "yarn clean && parcel build --no-autoinstall",
+    "build:excalidraw-assets": "cp -R ../../node_modules/@excalidraw/excalidraw/dist/excalidraw-assets build/excalidraw-assets",
+    "build:parcel": "parcel build --no-autoinstall",
+    "build": "yarn clean && yarn build:parcel && yarn build:excalidraw-assets",
     "start": "parcel --no-autoinstall"
   },
   "dependencies": {
