@@ -591,7 +591,7 @@ __metadata:
   dependencies:
     "@excalideck/deck": "workspace:*"
     "@excalideck/slide-renderers": "workspace:*"
-    pdf-lib: ^1.17.0
+    pdf-lib: "patch:pdf-lib@npm:1.17.0#../../.yarn/patches/pdf-lib-npm-1.17.0-927844fb44"
     typescript: ^4.4.4
   languageName: unknown
   linkType: soft
@@ -7749,7 +7749,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pdf-lib@npm:^1.17.0":
+"pdf-lib@npm:1.17.0":
   version: 1.17.0
   resolution: "pdf-lib@npm:1.17.0"
   dependencies:
@@ -7758,6 +7758,18 @@ __metadata:
     pako: ^1.0.11
     tslib: ^1.11.1
   checksum: af55e539cbbc777888888cf12ddf8d32087a5a484d016c15966768ae709dbf972d86d8079d69c694054475446004fd50b5c0848187f21ec74b874886fd69bda5
+  languageName: node
+  linkType: hard
+
+"pdf-lib@patch:pdf-lib@npm:1.17.0#../../.yarn/patches/pdf-lib-npm-1.17.0-927844fb44::locator=%40excalideck%2Fexcalideck-file%40workspace%3Apackages%2Fexcalideck-file":
+  version: 1.17.0
+  resolution: "pdf-lib@patch:pdf-lib@npm%3A1.17.0#../../.yarn/patches/pdf-lib-npm-1.17.0-927844fb44::version=1.17.0&hash=15653d&locator=%40excalideck%2Fexcalideck-file%40workspace%3Apackages%2Fexcalideck-file"
+  dependencies:
+    "@pdf-lib/standard-fonts": ^1.0.0
+    "@pdf-lib/upng": ^1.0.1
+    pako: ^1.0.11
+    tslib: ^1.11.1
+  checksum: a1f253b85acba6ed3cc38b74a8ad93e7e9143b962911bc16be487bb09c3a857d4e449346f8e6dc1ac46a30bc4576cdfed3f8f7342a5ff2e387961739682c0782
   languageName: node
   linkType: hard
 

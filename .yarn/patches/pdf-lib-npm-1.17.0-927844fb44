@@ -1,0 +1,18 @@
+diff --git a/es/utils/unicode.js b/es/utils/unicode.js
+index 1035450702a2c2d8544dd2b10a9ac2f690bb54e7..90fff68b0aad7c3bf62e8ccd2b976ce311b27c0c 100644
+--- a/es/utils/unicode.js
++++ b/es/utils/unicode.js
+@@ -305,7 +305,12 @@ export var utf16Decode = function (input, byteOrderMark) {
+     // There shouldn't be extra byte(s) left over
+     if (idx < input.length)
+         codePoints.push(REPLACEMENT);
+-    return String.fromCodePoint.apply(String, codePoints);
++    var retString = "";
++    var codePointsLength = codePoints.length;
++    for (var i=0; i<codePointsLength; i++) {
++        retString += String.fromCodePoint(codePoints[i]);
++    }
++    return retString;
+ };
+ /**
+  * Returns `true` if the given `codePoint` is a high surrogate.

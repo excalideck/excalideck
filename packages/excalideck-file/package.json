@@ -15,6 +15,6 @@
   "dependencies": {
     "@excalideck/deck": "workspace:*",
     "@excalideck/slide-renderers": "workspace:*",
-    "pdf-lib": "^1.17.0"
+    "pdf-lib": "patch:pdf-lib@npm:1.17.0#../../.yarn/patches/pdf-lib-npm-1.17.0-927844fb44"
   }
 }
