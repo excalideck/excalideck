@@ -7,6 +7,7 @@ import { Deck } from "@excalideck/deck";
 import { FileSavingState } from "@excalideck/excalideck-editor";
 import ExcalideckFile from "@excalideck/excalideck-file";
 import { useCallback, useState } from "react";
+import isAbortError from "../utils/isAbortError";
 
 interface PersistentExcalideckEditorState {
     fileSavingState: FileSavingState;
@@ -43,8 +44,10 @@ export default function usePersistentExcalideckEditorState(initialDeck: Deck) {
                 },
             });
         } catch (error) {
-            console.error(error);
-            window.alert("Loading from Excalideck file failed");
+            if (!isAbortError(error)) {
+                console.error(error);
+                window.alert("Loading from Excalideck file failed");
+            }
         }
     }
 
@@ -90,8 +93,10 @@ export default function usePersistentExcalideckEditorState(initialDeck: Deck) {
                 })
             );
         } catch (error) {
-            console.error(error);
-            window.alert("Saving to Excalideck file failed");
+            if (!isAbortError(error)) {
+                console.error(error);
+                window.alert("Saving to Excalideck file failed");
+            }
         }
     }
 
