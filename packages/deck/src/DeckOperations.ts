@@ -109,5 +109,9 @@ const DeckOperations = {
     getSlide(deck: Deck, slideId: string): Slide {
         return SlideOperations.getById(deck.slides, slideId);
     },
+
+    getSlideIndex(deck: Deck, slideId: string): number {
+        return SlideOperations.getIndexById(deck.slides, slideId);
+    },
 };
 export default DeckOperations;

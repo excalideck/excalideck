@@ -25,6 +25,14 @@ const SlideOperations = {
         return slide;
     },
 
+    getIndexById(slides: Slide[], id: string): number {
+        const slideIndex = slides.findIndex((slide) => slide.id === id);
+        if (slideIndex === -1) {
+            throw new SlideNotFoundWithId(id);
+        }
+        return slideIndex;
+    },
+
     updateShouldRenderById(
         slides: Slide[],
         id: string,

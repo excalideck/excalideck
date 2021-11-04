@@ -3,7 +3,7 @@
     top: 0.25rem;
     right: 0.25rem;
     width: 202px;
-    z-index: 100;
+    z-index: 1;
     display: grid;
     grid-template-columns: auto;
     grid-auto-flow: row;

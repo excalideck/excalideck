@@ -13,8 +13,14 @@ export default function SortableSlideMiniature({
     id,
     ...slideMiniatureProps
 }: Props) {
-    const { attributes, listeners, setNodeRef, transform, transition } =
-        useSortable({ id });
+    const {
+        attributes,
+        listeners,
+        setNodeRef,
+        transform,
+        transition,
+        isDragging,
+    } = useSortable({ id });
     return (
         <div
             className="SortableSlideMiniature"
@@ -22,6 +28,7 @@ export default function SortableSlideMiniature({
             style={omitNilCssRules({
                 transform: CSS.Transform.toString(transform),
                 transition,
+                visibility: isDragging ? "hidden" : "visible",
             })}
             {...attributes}
             {...listeners}
