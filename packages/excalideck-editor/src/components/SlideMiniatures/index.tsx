@@ -1,6 +1,7 @@
 import {
     closestCenter,
     DndContext,
+    DragOverlay,
     KeyboardSensor,
     PointerSensor,
     useSensor,
@@ -11,7 +12,9 @@ import {
     sortableKeyboardCoordinates,
     verticalListSortingStrategy,
 } from "@dnd-kit/sortable";
-import { Deck, Slide } from "@excalideck/deck";
+import { Deck, DeckOperations, Slide } from "@excalideck/deck";
+import { useState } from "react";
+import SlideMiniature from "../SlideMiniature";
 import SortableSlideMiniature from "../SortableSlideMiniature";
 
 interface Props {
@@ -26,13 +29,14 @@ export default function SlidesMiniatures({
     selectedSlide,
     onSelectSlide,
 }: Props) {
+    const { slides } = deck;
+    const [activeId, setActiveId] = useState<string | null>(null);
     const sensors = useSensors(
         useSensor(PointerSensor),
         useSensor(KeyboardSensor, {
             coordinateGetter: sortableKeyboardCoordinates,
         })
     );
-    const { slides } = deck;
     return (
         <DndContext
             sensors={sensors}
@@ -44,15 +48,17 @@ export default function SlidesMiniatures({
                 // slides.
                 if (over && active.id !== over.id) {
                     onMoveSlide(
-                        slides.findIndex((slide) => slide.id === active.id),
-                        slides.findIndex((slide) => slide.id === over.id)
+                        DeckOperations.getSlideIndex(deck, active.id),
+                        DeckOperations.getSlideIndex(deck, over.id)
                     );
                 }
+                setActiveId(null);
             }}
             onDragStart={({ active }) => {
                 // active is the SortableSlideMiniature element being dragged.
                 // Its id corresponds to the id of its slide.
                 onSelectSlide(active.id);
+                setActiveId(active.id);
             }}
         >
             <SortableContext
@@ -65,11 +71,26 @@ export default function SlidesMiniatures({
                         key={slide.id}
                         deck={deck}
                         slide={slide}
-                        slidePosition={index}
+                        slideIndex={index}
                         isSlideSelected={slide.id === selectedSlide.id}
+                        forceSynchronousFirstRender={false}
                     />
                 ))}
             </SortableContext>
+            <DragOverlay>
+                {activeId ? (
+                    <SlideMiniature
+                        deck={deck}
+                        slide={DeckOperations.getSlide(deck, activeId)}
+                        slideIndex={DeckOperations.getSlideIndex(
+                            deck,
+                            activeId
+                        )}
+                        isSlideSelected={activeId === selectedSlide.id}
+                        forceSynchronousFirstRender={true}
+                    />
+                ) : null}
+            </DragOverlay>
         </DndContext>
     );
 }

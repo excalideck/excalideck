@@ -3,3 +3,14 @@
     width: 186px;
     overflow-y: scroll;
 }
+
+/* Hide scrollbars */
+/* Firefox */
+.SlidesControl {
+    scrollbar-width: none;
+}
+/* WebKit + Blink browsers */
+.SlidesControl::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+}
