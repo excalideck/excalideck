@@ -10,6 +10,10 @@
 
 Go to [excalideck.com](https://excalideck.com) to start drawing a deck.
 
+## Roadmap
+
+See [Milestones](https://github.com/excalideck/excalideck/milestones).
+
 ## Develop
 
 See [CONTRIBUTING.md](./CONTRIBUTING.md).
