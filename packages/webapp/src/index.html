@@ -2,23 +2,71 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" href="./assets/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Excalideck | Weapon for Legendary Slides</title>
+
+    <link rel="icon" href="./favicon.ico" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, shrink-to-fit=no"
+    />
     <meta name="theme-color" content="#000000" />
+    <link rel="apple-touch-icon" href="./logo192.png" />
+    <link rel="manifest" href="./manifest.json" />
+
+    <!-- General tags -->
     <meta
       name="description"
-      content="Excalideck: Weapon for Legendary Slides"
+      content="Excalideck is an app for authoring slide decks that look hand-drawn."
     />
-    <link rel="apple-touch-icon" href="./assets/logo192.png" />
-    <link rel="manifest" href="./assets/manifest.json" />
-    <script id="app-config"></script>
-    <script
-      id="init-prod-assets"
-      type="module"
-      src="init-prod-assets.ts"
-    ></script>
-    <script type="module" src="index.tsx"></script>
-    <title>Excalideck</title>
+    <meta name="image" content="og-image.png" />
+
+    <!-- OpenGraph tags -->
+    <meta property="og:url" content="https://excalideck.com" />
+    <meta property="og:site_name" content="Excalideck" />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:title"
+      content="Excalideck | Weapon for Legendary Slides"
+    />
+    <meta
+      property="og:description"
+      content="Excalideck is an app for authoring slide decks that look hand-drawn."
+    />
+
+    <!-- OG tags require an absolute url for images -->
+    <meta
+      property="og:image"
+      name="twitter:image"
+      content="https://excalideck.com/assets/og-image.png"
+    />
+    <meta
+      property="og:image:secure_url"
+      name="twitter:image"
+      content="https://excalideck.com/assets/og-image.png"
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="640" />
+    <meta property="og:image:alt" content="Excalideck media image." />
+
+    <!-- Twitter Card tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta
+      name="twitter:title"
+      content="Excalideck | Weapon for Legendary Slides"
+    />
+    <meta
+      name="twitter:description"
+      content="Excalideck is an app for authoring slide decks that look hand-drawn."
+    />
+
+    <script id="app-config">
+      window.APP_CONFIG = { IS_HOMEPAGE: "true" };
+    </script>
+    <script id="init-assets" type="module">
+      import initAssets from "./init-assets";
+      initAssets();
+    </script>
+    <script type="module" src="./index.tsx"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

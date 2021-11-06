@@ -1,6 +1,7 @@
 import PersistentExcalideckEditor from "@excalideck/persistent-excalideck-editor";
 import { StrictMode } from "react";
 import ReactDOM from "react-dom";
+import CTABanner from "./components/CTABanner";
 import config from "./config";
 import getInitialDeck from "./getInitialDeck";
 import "./index.css";
@@ -13,6 +14,7 @@ async function init() {
                 initialDeck={initialDeck}
                 saveToLocalStorage={!config.isHomepage}
             />
+            <CTABanner />
         </StrictMode>,
         document.getElementById("root")
     );

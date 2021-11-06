@@ -1,6 +1,4 @@
-<p align="center">
-    <img src="./docs/logo-name-tagline.png" height="200" />
-</p>
+![Logo Name Tagline](./docs/logo-name-tagline.png)
 
 **Excalideck** is an app for authoring slide decks that look hand-drawn.
 **Excalideck** is based on the awesome

@@ -1,0 +1,16 @@
+.CTABanner {
+    z-index: 1;
+    position: fixed;
+    --width: 460px;
+    width: var(--width);
+    left: calc((100% - var(--width)) / 2);
+    bottom: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+}
+
+.CTABanner .CTABannerLink {
+    margin-right: 0.25rem;
+}
