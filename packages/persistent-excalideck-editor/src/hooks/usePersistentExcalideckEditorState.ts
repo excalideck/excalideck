@@ -7,6 +7,7 @@ import { Deck } from "@excalideck/deck";
 import { FileSavingState } from "@excalideck/excalideck-editor";
 import ExcalideckFile from "@excalideck/excalideck-file";
 import { useCallback, useState } from "react";
+import LocalDeck from "../LocalDeck";
 import isAbortError from "../utils/isAbortError";
 
 interface PersistentExcalideckEditorState {
@@ -15,14 +16,17 @@ interface PersistentExcalideckEditorState {
     deck: Deck;
 }
 
-export default function usePersistentExcalideckEditorState(initialDeck: Deck) {
+export default function usePersistentExcalideckEditorState(
+    initialDeck: Deck,
+    saveToLocalStorage: boolean
+) {
     const [
         persistentExcalideckEditorState,
         setPersistentExcalideckEditorState,
     ] = useState<PersistentExcalideckEditorState>({
         fileSavingState: null,
         openFileHandle: null,
-        deck: initialDeck,
+        deck: saveToLocalStorage ? LocalDeck.get() ?? initialDeck : initialDeck,
     });
 
     async function loadFromFile() {
@@ -101,7 +105,10 @@ export default function usePersistentExcalideckEditorState(initialDeck: Deck) {
     }
 
     const updateDeck = useCallback(
-        (deck: Deck) =>
+        (deck: Deck) => {
+            if (saveToLocalStorage) {
+                LocalDeck.set(deck);
+            }
             setPersistentExcalideckEditorState(
                 (latestPersistentExcalideckEditorState) => ({
                     ...latestPersistentExcalideckEditorState,
@@ -114,8 +121,9 @@ export default function usePersistentExcalideckEditorState(initialDeck: Deck) {
                               }
                             : null,
                 })
-            ),
-        []
+            );
+        },
+        [saveToLocalStorage]
     );
 
     return {

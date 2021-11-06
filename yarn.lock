@@ -608,8 +608,10 @@ __metadata:
     "@excalideck/excalideck-file": "workspace:*"
     "@parcel/packager-ts": ^2.0.0
     "@parcel/transformer-typescript-types": ^2.0.0
+    "@types/lodash": ^4.14.176
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
+    lodash: ^4.17.21
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2

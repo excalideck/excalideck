@@ -11,6 +11,7 @@ ReactDOM.render(
                 width: 1500,
                 height: 1000,
             })}
+            saveToLocalStorage={true}
         />
     </StrictMode>,
     document.getElementById("root")

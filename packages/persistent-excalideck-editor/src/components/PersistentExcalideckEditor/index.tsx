@@ -4,10 +4,14 @@ import usePersistentExcalideckEditorState from "../../hooks/usePersistentExcalid
 
 interface Props {
     initialDeck: Deck;
+    saveToLocalStorage: boolean;
 }
-export default function PersistentExcalideckEditor({ initialDeck }: Props) {
+export default function PersistentExcalideckEditor({
+    initialDeck,
+    saveToLocalStorage,
+}: Props) {
     const { deck, fileSavingState, updateDeck, saveToFile, loadFromFile } =
-        usePersistentExcalideckEditorState(initialDeck);
+        usePersistentExcalideckEditorState(initialDeck, saveToLocalStorage);
     return (
         <ExcalideckEditor
             key={fileSavingState?.fileName ?? "null"}

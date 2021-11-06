@@ -9,7 +9,10 @@ async function init() {
     const initialDeck = await getInitialDeck(config.isHomepage);
     ReactDOM.render(
         <StrictMode>
-            <PersistentExcalideckEditor initialDeck={initialDeck} />
+            <PersistentExcalideckEditor
+                initialDeck={initialDeck}
+                saveToLocalStorage={!config.isHomepage}
+            />
         </StrictMode>,
         document.getElementById("root")
     );

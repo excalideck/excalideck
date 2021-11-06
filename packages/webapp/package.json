@@ -12,7 +12,7 @@
   "scripts": {
     "clean": "rm -rf build dist",
     "build:excalidraw-assets": "cp -R ../../node_modules/@excalidraw/excalidraw/dist/excalidraw-assets build/excalidraw-assets",
-    "build:parcel": "parcel build --no-autoinstall",
+    "build:parcel": "tsc && parcel build --no-autoinstall",
     "build": "yarn clean && yarn build:parcel && yarn build:excalidraw-assets",
     "start": "parcel --no-autoinstall"
   },
