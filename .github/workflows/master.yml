@@ -1,6 +1,9 @@
-name: QA and deploy
+name: QA and deploy to production
 
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - master
 
 jobs:
   qa:
@@ -24,7 +27,7 @@ jobs:
   deploy:
     needs: qa
     runs-on: ubuntu-latest
-    environment: StaticDeploy
+    environment: StaticDeployProd
     env:
       STATICDEPLOY_API_URL: ${{secrets.STATICDEPLOY_API_URL}}
       STATICDEPLOY_API_TOKEN: ${{secrets.STATICDEPLOY_API_TOKEN}}
@@ -41,7 +44,9 @@ jobs:
         run: yarn build
       - name: Deploy bundle
         run: yarn deploy:bundle
-      - name: Deploy entrypoint
-        run: yarn deploy:entrypoint
+      - name: Deploy prod app entrypoint
+        run: yarn deploy:entrypoint:prod:app
+      - name: Deploy prod homepage entrypoint
+        run: yarn deploy:entrypoint:prod:homepage
       - name: Purge CDN cache
         run: yarn deploy:purge

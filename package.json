@@ -12,7 +12,9 @@
     "check-formatting": "prettier --list-different .",
     "fix-formatting": "prettier --write .",
     "deploy:bundle": "staticdeploy bundle --config packages/webapp/staticdeploy.config.js",
-    "deploy:entrypoint": "staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
+    "deploy:entrypoint:preview": "staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
+    "deploy:entrypoint:prod:app": "staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
+    "deploy:entrypoint:prod:homepage": "IS_HOMEPAGE=true staticdeploy deploy --config packages/webapp/staticdeploy.config.js",
     "deploy:purge": "./scripts/purge-cdn-cache.sh"
   },
   "devDependencies": {

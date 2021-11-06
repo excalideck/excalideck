@@ -8,8 +8,9 @@ const BUNDLE_TAG = GITHUB_REF.startsWith("refs/pull/")
     : GITHUB_REF.startsWith("refs/tags/")
     ? `TAG/${GITHUB_REF.replace(/^refs\/tags\//, "")}`
     : "UNKNOWN";
-const IS_MASTER = BUNDLE_TAG === "BRANCH/master";
 const COMMIT_SHA = process.env.GITHUB_SHA;
+const IS_MASTER = BUNDLE_TAG === "BRANCH/master";
+const IS_HOMEPAGE = process.env.IS_HOMEPAGE === "true";
 
 module.exports = {
     bundle: {
@@ -26,10 +27,12 @@ module.exports = {
         },
     },
     deploy: {
-        app: "excalideck.com",
+        app: IS_MASTER ? "excalideck.com" : "preview.excalideck.com",
         entrypoint: IS_MASTER
-            ? "excalideck.com/"
-            : `excalideck.com/_/${BUNDLE_TAG}/`,
+            ? IS_HOMEPAGE
+                ? "excalideck.com/"
+                : "app.excalideck.com/"
+            : `preview.excalideck.com/${BUNDLE_TAG}/`,
         bundle: `excalideck.com:${BUNDLE_TAG}`,
     },
 };
