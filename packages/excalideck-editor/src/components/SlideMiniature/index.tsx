@@ -11,16 +11,9 @@ export interface Props {
     slide: Slide;
     slideIndex: number;
     isSlideSelected: boolean;
-    forceSynchronousFirstRender?: boolean;
 }
 export default forwardRef<HTMLDivElement, Props>(function SlideMiniature(
-    {
-        deck,
-        slide,
-        slideIndex,
-        isSlideSelected,
-        forceSynchronousFirstRender,
-    }: Props,
+    { deck, slide, slideIndex, isSlideSelected }: Props,
     ref
 ) {
     return (
@@ -28,8 +21,7 @@ export default forwardRef<HTMLDivElement, Props>(function SlideMiniature(
             ref={ref}
             className={clsx(
                 "SlideMiniature",
-                isSlideSelected && "SelectedSlideMiniature",
-                !slide.shouldRender && "NonRenderingSlideMiniature"
+                isSlideSelected && "SelectedSlideMiniature"
             )}
         >
             <div className="SlideMiniatureLayer">
@@ -37,14 +29,13 @@ export default forwardRef<HTMLDivElement, Props>(function SlideMiniature(
                     deck={deck}
                     slide={slide}
                     slideIndex={slideIndex}
-                    forceSynchronousFirstRender={forceSynchronousFirstRender}
                 />
             </div>
-            <div className="SlideMiniatureLayer">
-                {!slide.shouldRender ? (
+            {!slide.shouldRender ? (
+                <div className="SlideMiniatureLayer NonRenderingSlideMiniatureMask">
                     <FontAwesomeIcon icon={faEyeSlash} />
-                ) : null}
-            </div>
+                </div>
+            ) : null}
         </div>
     );
 });

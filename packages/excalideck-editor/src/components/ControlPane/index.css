@@ -2,7 +2,7 @@
     position: fixed;
     top: 0.25rem;
     right: 0.25rem;
-    width: 202px;
+    width: 200px;
     z-index: 1;
     display: grid;
     grid-template-columns: auto;

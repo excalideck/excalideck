@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "clean": "rm -rf build dist",
-    "build": "yarn clean && parcel build --no-autoinstall",
+    "build": "yarn clean && tsc && parcel build --no-autoinstall",
     "start": "parcel dev/index.html --no-autoinstall",
     "test": "jest"
   },
@@ -26,6 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.16",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
+    "lru-cache": "^6.0.0",
     "use-debounce": "^7.0.0"
   },
   "peerDependencies": {
@@ -37,6 +38,7 @@
     "@parcel/transformer-typescript-types": "^2.0.0",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.176",
+    "@types/lru-cache": "^5.1.1",
     "@types/react": "^17.0.33",
     "@types/react-dom": "^17.0.10",
     "jest": "^27.3.1",

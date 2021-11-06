@@ -18,6 +18,7 @@ export default function ViewInputRadioButton({
                 "ViewInputRadioButton",
                 active && "ActiveViewInputRadioButton"
             )}
+            role="button"
             onClick={() => onClick()}
         >
             {label}

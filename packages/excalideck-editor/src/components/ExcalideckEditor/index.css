@@ -7,7 +7,9 @@
     --light-gray-1: #e9ecef;
     --light-gray-2: #dee2e6;
     --light-gray-3: #ced4da;
+    --light-gray-4: #bebebe;
     --dark-gray: #343a40;
+    --dark-gray-rgb: 52, 58, 64;
     font-family: var(--ui-font);
     width: 100%;
     height: 100%;

@@ -73,7 +73,6 @@ export default function SlidesMiniatures({
                         slide={slide}
                         slideIndex={index}
                         isSlideSelected={slide.id === selectedSlide.id}
-                        forceSynchronousFirstRender={false}
                     />
                 ))}
             </SortableContext>
@@ -87,7 +86,6 @@ export default function SlidesMiniatures({
                             activeId
                         )}
                         isSlideSelected={activeId === selectedSlide.id}
-                        forceSynchronousFirstRender={true}
                     />
                 ) : null}
             </DragOverlay>
