@@ -1,11 +1,12 @@
 .CTABannerLink {
     --purple: #862e9c;
+    --light-purple: #eee4f1;
     width: 200px;
     padding: 0.75rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: white;
+    background-color: var(--light-purple);
     color: var(--purple);
     border: 2px solid var(--purple);
     border-radius: 0.25rem;

@@ -4,11 +4,10 @@
     --width: 460px;
     width: var(--width);
     left: calc((100% - var(--width)) / 2);
-    bottom: 0.25rem;
+    bottom: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 8px;
 }
 
 .CTABanner .CTABannerLink {

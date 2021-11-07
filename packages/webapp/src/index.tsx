@@ -14,7 +14,7 @@ async function init() {
                 initialDeck={initialDeck}
                 saveToLocalStorage={!config.isHomepage}
             />
-            <CTABanner />
+            {config.isHomepage ? <CTABanner /> : null}
         </StrictMode>,
         document.getElementById("root")
     );

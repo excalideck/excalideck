@@ -657,6 +657,7 @@ __metadata:
   resolution: "@excalideck/webapp@workspace:packages/webapp"
   dependencies:
     "@excalideck/deck": "workspace:*"
+    "@excalideck/excalideck-editor": "workspace:*"
     "@excalideck/persistent-excalideck-editor": "workspace:*"
     "@fortawesome/fontawesome-svg-core": ^1.2.36
     "@fortawesome/free-brands-svg-icons": ^5.15.4
