@@ -12,7 +12,7 @@ import lruMemoize from "../utils/lruMemoize";
 const EXCALIDRAW_EXPORT_DEFAULT_PADDING = 10;
 const FAR_POINT = { x: -5_000, y: -5_000 };
 
-const CanvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
+const canvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
     renderSlide: lruMemoize(
         (deck: Deck, slideId: string): HTMLCanvasElement => {
             const slide = DeckOperations.getSlide(deck, slideId);
@@ -49,7 +49,7 @@ const CanvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
         }
     ),
 };
-export default CanvasSlideRenderer;
+export default canvasSlideRenderer;
 
 function makeContainingPerimeter(
     printableArea: PrintableArea

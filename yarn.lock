@@ -568,11 +568,13 @@ __metadata:
     "@parcel/transformer-typescript-types": ^2.0.0
     "@types/jest": ^27.0.2
     "@types/lodash": ^4.14.176
+    "@types/lru-cache": ^5.1.1
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
     clsx: ^1.1.1
     jest: ^27.3.1
     lodash: ^4.17.21
+    lru-cache: ^6.0.0
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -606,8 +608,10 @@ __metadata:
     "@excalideck/excalideck-file": "workspace:*"
     "@parcel/packager-ts": ^2.0.0
     "@parcel/transformer-typescript-types": ^2.0.0
+    "@types/lodash": ^4.14.176
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
+    lodash: ^4.17.21
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
@@ -653,7 +657,12 @@ __metadata:
   resolution: "@excalideck/webapp@workspace:packages/webapp"
   dependencies:
     "@excalideck/deck": "workspace:*"
+    "@excalideck/excalideck-editor": "workspace:*"
     "@excalideck/persistent-excalideck-editor": "workspace:*"
+    "@fortawesome/fontawesome-svg-core": ^1.2.36
+    "@fortawesome/free-brands-svg-icons": ^5.15.4
+    "@fortawesome/free-solid-svg-icons": ^5.15.4
+    "@fortawesome/react-fontawesome": ^0.1.16
     "@parcel/packager-raw-url": ^2.0.0
     "@parcel/transformer-webmanifest": ^2.0.0
     "@types/react": ^17.0.33
@@ -688,6 +697,15 @@ __metadata:
   dependencies:
     "@fortawesome/fontawesome-common-types": ^0.2.36
   checksum: 3011d8c1452b5df52a62eaee8b1ec925b9fdfabcc170fd6da5eaac7cfdef56258b9292ddd06c30f03a6a8ed6faa886565211f2e469fee3c9831c32f93e9383d8
+  languageName: node
+  linkType: hard
+
+"@fortawesome/free-brands-svg-icons@npm:^5.15.4":
+  version: 5.15.4
+  resolution: "@fortawesome/free-brands-svg-icons@npm:5.15.4"
+  dependencies:
+    "@fortawesome/fontawesome-common-types": ^0.2.36
+  checksum: 06e38132fbdf04d8677cf6e47e73cd566f68256f542d68d354e26f5ca7536c714b56f5f3dc6c670065b888ee08bc913bb4f213ab08225faf955d893a6a86ed02
   languageName: node
   linkType: hard
 

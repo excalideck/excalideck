@@ -1,7 +1,7 @@
 .SlideMiniature {
     box-sizing: border-box;
     position: relative;
-    width: 186px;
+    width: 184px;
     height: 124px;
     border: 2px solid var(--light-gray-1);
     border-radius: 0.25rem;
@@ -26,6 +26,8 @@
     border-color: var(--orange);
 }
 
-.NonRenderingSlideMiniature {
-    opacity: 0.5;
+.NonRenderingSlideMiniatureMask {
+    z-index: 1;
+    background: rgba(255, 255, 255, 0.8);
+    color: var(--light-gray-4);
 }
