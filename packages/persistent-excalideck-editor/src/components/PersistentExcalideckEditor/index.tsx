@@ -13,7 +13,7 @@ export default function PersistentExcalideckEditor({
 }: Props) {
     const { deck, fileSavingState, updateDeck, saveToFile, loadFromFile } =
         usePersistentExcalideckEditorState(initialDeck, saveToLocalStorage);
-    const { library, onLibraryChange } = useLocalLibrary();
+    const { library, onLibraryChange } = useLocalLibrary(saveToLocalStorage);
     return (
         <ExcalideckEditor
             key={fileSavingState?.fileName ?? "null"}
