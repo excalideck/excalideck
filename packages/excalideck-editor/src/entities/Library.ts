@@ -1,4 +1,4 @@
-import { ExcalidrawElement } from "@excalideck/deck";
+import LibraryItem from "./LibraryItem";
 
-type Library = readonly ExcalidrawElement[];
+type Library = readonly LibraryItem[];
 export default Library;
