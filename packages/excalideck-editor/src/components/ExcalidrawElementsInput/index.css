@@ -3,11 +3,33 @@
     height: 100%;
 }
 
+/*
+ * Hide Excalidraw's top-left Island that usually displays file operation
+ * buttons and the background color & theme controls
+ */
 .ExcalidrawElementsInput
+    .excalidraw
     .App-menu_top
-    .Stack_vertical
-    .Island
-    .Stack_vertical
-    > .Stack_horizontal {
+    > .Stack_vertical:first-child
+    > section:first-child {
     display: none;
+}
+
+/*
+ * Because of the rule above hiding the top-left Island, the remaining "element
+ * controls" Island is rendered with different widths depending on its content.
+ * For instance, when a rectangle is selected, the controls for the rectangle
+ * take up a certain space, and this Island is rendered with a width of ~187px.
+ * When instead a text element is selected, the controls for the text element
+ * make the Island render with a width of 224px.
+ *
+ * With the following rule we "fix" the width to a big enough value so that it
+ * will render with the same width no matter the content.
+ */
+.ExcalidrawElementsInput
+    .excalidraw
+    .App-menu_top
+    > .Stack_vertical:first-child
+    > section:nth-child(2) {
+    width: 224px;
 }

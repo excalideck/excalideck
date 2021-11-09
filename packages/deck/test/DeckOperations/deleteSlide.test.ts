@@ -26,10 +26,10 @@ describe("DeckOperations.deleteSlide", () => {
         };
 
         // Exercise
-        const updatedDeck = DeckOperations.deleteSlide(deck, "0");
+        const newDeck = DeckOperations.deleteSlide(deck, "0");
 
         // Verify
-        expect(getSlideIds(updatedDeck)).toEqual(["1"]);
+        expect(getSlideIds(newDeck)).toEqual(["1"]);
     });
 
     it("when the deck only contains the to-be-deleted slide, replaces it with an empty one", () => {
@@ -41,9 +41,9 @@ describe("DeckOperations.deleteSlide", () => {
         };
 
         // Exercise
-        const updatedDeck = DeckOperations.deleteSlide(deck, "0");
+        const newDeck = DeckOperations.deleteSlide(deck, "0");
 
         // Verify
-        expect(getSlideIds(updatedDeck)).toHaveLength(1);
+        expect(getSlideIds(newDeck)).toHaveLength(1);
     });
 });

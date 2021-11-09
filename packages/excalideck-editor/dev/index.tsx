@@ -11,9 +11,9 @@ ReactDOM.render(
                 width: 1500,
                 height: 1000,
             })}
-            onDeckChange={(updatedDeck) => {
+            onDeckChange={(newDeck) => {
                 console.log("onDeckChange");
-                console.log(updatedDeck);
+                console.log(newDeck);
             }}
             fileSavingState={null}
             onLoadFromFile={() => {
@@ -21,6 +21,11 @@ ReactDOM.render(
             }}
             onSaveToFile={() => {
                 console.log("onSave");
+            }}
+            initialLibrary={[]}
+            onLibraryChange={(newLibrary) => {
+                console.log("onLibraryChange");
+                console.log(newLibrary);
             }}
         />
     </StrictMode>,

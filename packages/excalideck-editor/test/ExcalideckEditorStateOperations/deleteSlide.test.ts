@@ -19,18 +19,16 @@ describe("ExcalideckEditorStateOperations.deleteSlide", () => {
                 };
 
                 // Exercise
-                const updatedExcalideckEditorState =
+                const newExcalideckEditorState =
                     ExcalideckEditorStateOperations.deleteSlide(
                         excalideckEditorState,
                         excalideckEditorState.selectedSlideId
                     );
 
                 // Verify
-                expect(updatedExcalideckEditorState.deck.slides).toHaveLength(
-                    1
-                );
-                expect(updatedExcalideckEditorState.selectedSlideId).toEqual(
-                    updatedExcalideckEditorState.deck.slides[0]!.id
+                expect(newExcalideckEditorState.deck.slides).toHaveLength(1);
+                expect(newExcalideckEditorState.selectedSlideId).toEqual(
+                    newExcalideckEditorState.deck.slides[0]!.id
                 );
             });
 
@@ -51,18 +49,16 @@ describe("ExcalideckEditorStateOperations.deleteSlide", () => {
                 };
 
                 // Exercise
-                const updatedExcalideckEditorState =
+                const newExcalideckEditorState =
                     ExcalideckEditorStateOperations.deleteSlide(
                         excalideckEditorState,
                         excalideckEditorState.selectedSlideId
                     );
 
                 // Verify
-                expect(updatedExcalideckEditorState.deck.slides).toHaveLength(
-                    2
-                );
-                expect(updatedExcalideckEditorState.selectedSlideId).toEqual(
-                    updatedExcalideckEditorState.deck.slides[0]!.id
+                expect(newExcalideckEditorState.deck.slides).toHaveLength(2);
+                expect(newExcalideckEditorState.selectedSlideId).toEqual(
+                    newExcalideckEditorState.deck.slides[0]!.id
                 );
             });
 
@@ -83,18 +79,16 @@ describe("ExcalideckEditorStateOperations.deleteSlide", () => {
                 };
 
                 // Exercise
-                const updatedExcalideckEditorState =
+                const newExcalideckEditorState =
                     ExcalideckEditorStateOperations.deleteSlide(
                         excalideckEditorState,
                         excalideckEditorState.selectedSlideId
                     );
 
                 // Verify
-                expect(updatedExcalideckEditorState.deck.slides).toHaveLength(
-                    2
-                );
-                expect(updatedExcalideckEditorState.selectedSlideId).toEqual(
-                    updatedExcalideckEditorState.deck.slides[1]!.id
+                expect(newExcalideckEditorState.deck.slides).toHaveLength(2);
+                expect(newExcalideckEditorState.selectedSlideId).toEqual(
+                    newExcalideckEditorState.deck.slides[1]!.id
                 );
             });
 
@@ -115,18 +109,16 @@ describe("ExcalideckEditorStateOperations.deleteSlide", () => {
                 };
 
                 // Exercise
-                const updatedExcalideckEditorState =
+                const newExcalideckEditorState =
                     ExcalideckEditorStateOperations.deleteSlide(
                         excalideckEditorState,
                         excalideckEditorState.selectedSlideId
                     );
 
                 // Verify
-                expect(updatedExcalideckEditorState.deck.slides).toHaveLength(
-                    2
-                );
-                expect(updatedExcalideckEditorState.selectedSlideId).toEqual(
-                    updatedExcalideckEditorState.deck.slides[0]!.id
+                expect(newExcalideckEditorState.deck.slides).toHaveLength(2);
+                expect(newExcalideckEditorState.selectedSlideId).toEqual(
+                    newExcalideckEditorState.deck.slides[0]!.id
                 );
             });
         });

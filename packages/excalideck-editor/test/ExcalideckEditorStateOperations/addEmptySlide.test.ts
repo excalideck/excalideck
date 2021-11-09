@@ -14,15 +14,15 @@ describe("ExcalideckEditorStateOperations.addEmptySlide", () => {
         };
 
         // Exercise
-        const updatedExcalideckEditorState =
+        const newExcalideckEditorState =
             ExcalideckEditorStateOperations.addEmptySlide(
                 excalideckEditorState
             );
 
         // Verify
-        expect(updatedExcalideckEditorState.deck.slides).toHaveLength(2);
-        expect(updatedExcalideckEditorState.selectedSlideId).toEqual(
-            updatedExcalideckEditorState.deck.slides[1]!.id
+        expect(newExcalideckEditorState.deck.slides).toHaveLength(2);
+        expect(newExcalideckEditorState.selectedSlideId).toEqual(
+            newExcalideckEditorState.deck.slides[1]!.id
         );
     });
 });
