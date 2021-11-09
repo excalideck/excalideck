@@ -3,6 +3,7 @@ import Excalidraw from "@excalidraw/excalidraw";
 import { ExcalidrawImperativeAPI } from "@excalidraw/excalidraw/types/types";
 import { cloneDeep } from "lodash";
 import { useEffect, useMemo, useRef } from "react";
+import Library from "../../entities/Library";
 import PrintableAreaUtils from "../../utils/PrintableAreaUtils";
 import "./index.css";
 
@@ -71,6 +72,8 @@ interface Props {
     printableArea: PrintableArea;
     initialValue: ExcalidrawElement[];
     onChange: (newValue: ExcalidrawElement[]) => void;
+    initialLibrary: Library;
+    onLibraryChange: (newLibrary: Library) => void;
 }
 /**
  * ### Uncontrolled component warning
@@ -84,6 +87,8 @@ export default function ExcalidrawElementsInput({
     printableArea,
     initialValue,
     onChange,
+    initialLibrary,
+    onLibraryChange,
 }: Props) {
     const excalidrawRef = useRef<ExcalidrawImperativeAPI>(null);
 
@@ -93,6 +98,7 @@ export default function ExcalidrawElementsInput({
             appState: {
                 zoom: PrintableAreaUtils.getFittingZoom(printableArea),
             },
+            libraryItems: initialLibrary as any,
         }),
         // As stated above, we ignore changes to `initialValue`
         // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -128,6 +134,8 @@ export default function ExcalidrawElementsInput({
             <Excalidraw
                 ref={excalidrawRef}
                 initialData={initialData}
+                viewModeEnabled={false}
+                onLibraryChange={onLibraryChange as any}
                 UIOptions={{
                     canvasActions: {
                         changeViewBackgroundColor: true,

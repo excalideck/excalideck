@@ -45,13 +45,13 @@ const ExcalideckEditorStateOperations = {
     addEmptySlide(
         excalideckEditorState: ExcalideckEditorState
     ): ExcalideckEditorState {
-        const updatedDeck = DeckOperations.addEmptySlide(
+        const newDeck = DeckOperations.addEmptySlide(
             excalideckEditorState.deck
         );
-        const addedSlide = last(updatedDeck.slides)!;
+        const addedSlide = last(newDeck.slides)!;
         return {
             ...excalideckEditorState,
-            deck: updatedDeck,
+            deck: newDeck,
             selectedSlideId: addedSlide.id,
         };
     },
@@ -75,21 +75,21 @@ const ExcalideckEditorStateOperations = {
         excalideckEditorState: ExcalideckEditorState,
         slideId: string
     ): ExcalideckEditorState {
-        const updatedDeck = DeckOperations.deleteSlide(
+        const newDeck = DeckOperations.deleteSlide(
             excalideckEditorState.deck,
             excalideckEditorState.selectedSlideId
         );
-        const updatedSelectedSlideId =
+        const newSelectedSlideId =
             slideId === excalideckEditorState.selectedSlideId
                 ? SlideUtils.getAdjacentSlideId(
                       excalideckEditorState.deck.slides,
                       excalideckEditorState.selectedSlideId
-                  ) ?? updatedDeck.slides[0]!.id
+                  ) ?? newDeck.slides[0]!.id
                 : excalideckEditorState.selectedSlideId;
         return {
             ...excalideckEditorState,
-            deck: updatedDeck,
-            selectedSlideId: updatedSelectedSlideId,
+            deck: newDeck,
+            selectedSlideId: newSelectedSlideId,
         };
     },
 

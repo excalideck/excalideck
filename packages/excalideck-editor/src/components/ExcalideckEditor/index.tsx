@@ -1,5 +1,6 @@
 import { Deck } from "@excalideck/deck";
 import FileSavingState from "../../entities/FileSavingState";
+import Library from "../../entities/Library";
 import useExcalideckEditorState from "../../hooks/useExcalideckEditorState";
 import ControlPane from "../ControlPane";
 import DrawingPane from "../DrawingPane";
@@ -11,6 +12,8 @@ interface Props {
     fileSavingState: FileSavingState;
     onLoadFromFile: () => void;
     onSaveToFile: () => void;
+    initialLibrary: Library;
+    onLibraryChange: (newLibrary: Library) => void;
 }
 export default function ExcalideckEditor({
     initialDeck,
@@ -18,6 +21,8 @@ export default function ExcalideckEditor({
     fileSavingState,
     onLoadFromFile,
     onSaveToFile,
+    initialLibrary,
+    onLibraryChange,
 }: Props) {
     const {
         activeView,
@@ -44,6 +49,8 @@ export default function ExcalideckEditor({
                 }
                 selectedSlide={selectedSlide}
                 onUpdateSlideExcalidrawElements={updateSlideExcalidrawElements}
+                initialLibrary={initialLibrary}
+                onLibraryChange={onLibraryChange}
             />
             <ControlPane
                 activeView={activeView}

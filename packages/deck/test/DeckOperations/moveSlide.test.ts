@@ -41,10 +41,10 @@ describe("DeckOperations.moveSlide", () => {
             };
 
             // Exercise
-            const updatedDeck = DeckOperations.moveSlide(deck, from, to);
+            const newDeck = DeckOperations.moveSlide(deck, from, to);
 
             // Verify
-            expect(getSlideIds(updatedDeck)).toEqual(expectedSlideIds);
+            expect(getSlideIds(newDeck)).toEqual(expectedSlideIds);
         }
     );
 });

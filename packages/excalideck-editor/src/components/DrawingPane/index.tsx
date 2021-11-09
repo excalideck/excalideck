@@ -1,4 +1,5 @@
 import { Deck, ExcalidrawElement, Hash, Slide } from "@excalideck/deck";
+import Library from "../../entities/Library";
 import View from "../../entities/View";
 import ExcalidrawElementUtils from "../../utils/ExcalidrawElementUtils";
 import ExcalidrawElementsInput from "../ExcalidrawElementsInput";
@@ -14,6 +15,8 @@ interface Props {
         slideId: string,
         excalidrawElements: ExcalidrawElement[]
     ) => void;
+    initialLibrary: Library;
+    onLibraryChange: (newLibrary: Library) => void;
 }
 export default function DrawingPane({
     activeView,
@@ -21,6 +24,8 @@ export default function DrawingPane({
     onUpdateCommonExcalidrawElements,
     selectedSlide,
     onUpdateSlideExcalidrawElements,
+    initialLibrary,
+    onLibraryChange,
 }: Props) {
     return (
         <ExcalidrawElementsInput
@@ -43,23 +48,25 @@ export default function DrawingPane({
                           deck
                       )
             }
-            onChange={(updatedExcalidrawElements) => {
+            onChange={(newExcalidrawElements) => {
                 if (activeView === View.Slides) {
                     onUpdateSlideExcalidrawElements(
                         selectedSlide.id,
                         ExcalidrawElementUtils.extractSlideExcalidrawElements(
-                            updatedExcalidrawElements,
+                            newExcalidrawElements,
                             deck.commonExcalidrawElements
                         )
                     );
                 } else {
                     onUpdateCommonExcalidrawElements(
                         ExcalidrawElementUtils.extractCommonExcalidrawElements(
-                            updatedExcalidrawElements
+                            newExcalidrawElements
                         )
                     );
                 }
             }}
+            initialLibrary={initialLibrary}
+            onLibraryChange={onLibraryChange}
         />
     );
 }
