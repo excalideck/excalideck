@@ -20,11 +20,7 @@ module.exports = {
         description: `Commit ${COMMIT_SHA}`,
         fallbackAssetPath: "/index.html",
         fallbackStatusCode: 200,
-        headers: {
-            "**/*": {
-                "Cache-Control": "public, max-age=86400",
-            },
-        },
+        headers: {},
     },
     deploy: {
         app: IS_MASTER ? "excalideck.com" : "preview.excalideck.com",

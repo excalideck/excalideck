@@ -3,11 +3,12 @@ import { StrictMode } from "react";
 import ReactDOM from "react-dom";
 import CTABanner from "./components/CTABanner";
 import config from "./config";
-import getInitialDeck from "./getInitialDeck";
 import "./index.css";
+import InitialDeck from "./InitialDeck";
+import registerServiceWorker from "./service-worker/registerServiceWorker";
 
 async function init() {
-    const initialDeck = await getInitialDeck(config.isHomepage);
+    const initialDeck = await InitialDeck.get(config.isHomepage);
     ReactDOM.render(
         <StrictMode>
             <PersistentExcalideckEditor
@@ -18,5 +19,9 @@ async function init() {
         </StrictMode>,
         document.getElementById("root")
     );
+
+    if (!config.isHomepage) {
+        registerServiceWorker(config.serviceWorkerScope);
+    }
 }
 init();

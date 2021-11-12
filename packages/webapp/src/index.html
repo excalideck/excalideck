@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>Excalideck | Weapon for Legendary Slides</title>
 
-    <link rel="icon" href="./favicon.ico" />
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover, shrink-to-fit=no"
     />
-    <meta name="theme-color" content="#000000" />
-    <link rel="apple-touch-icon" href="./logo192.png" />
+    <meta name="theme-color" content="#82c91e" />
+    <link rel="icon" href="./assets/parcel/favicon.ico" />
+    <link rel="apple-touch-icon" href="./assets/parcel/maskable-logo192.png" />
     <link rel="manifest" href="./manifest.json" />
 
     <!-- General tags -->
@@ -18,7 +18,10 @@
       name="description"
       content="Excalideck is an app for authoring slide decks that look hand-drawn."
     />
-    <meta name="image" content="og-image.png" />
+    <meta
+      name="image"
+      content="https://excalideck.com/assets/misc/og-image.png"
+    />
 
     <!-- OpenGraph tags -->
     <meta property="og:url" content="https://excalideck.com" />
@@ -37,12 +40,12 @@
     <meta
       property="og:image"
       name="twitter:image"
-      content="https://excalideck.com/assets/og-image.png"
+      content="https://excalideck.com/assets/misc/og-image.png"
     />
     <meta
       property="og:image:secure_url"
       name="twitter:image"
-      content="https://excalideck.com/assets/og-image.png"
+      content="https://excalideck.com/assets/misc/og-image.png"
     />
     <meta property="og:image:width" content="1280" />
     <meta property="og:image:height" content="640" />
@@ -62,9 +65,9 @@
     <script id="app-config">
       window.APP_CONFIG = { IS_HOMEPAGE: "true" };
     </script>
-    <script id="init-assets" type="module">
-      import initAssets from "./init-assets";
-      initAssets();
+    <script id="init-excalidraw-assets" type="module">
+      import initExcalidrawAssets from "./initExcalidrawAssets";
+      initExcalidrawAssets();
     </script>
     <script type="module" src="./index.tsx"></script>
   </head>

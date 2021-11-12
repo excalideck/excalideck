@@ -11,10 +11,11 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean": "rm -rf build dist",
-    "build:assets": "cp -R src/assets build/assets",
-    "build:excalidraw-assets": "cp -R ../../node_modules/@excalidraw/excalidraw/dist/excalidraw-assets build/excalidraw-assets",
+    "build:assets:misc": "node scripts/copyMiscAssets.js",
+    "build:assets:excalidraw": "node scripts/copyExcalidrawAssets.js",
+    "build:check-precached-excalidraw-assets": "node scripts/checkPrecachedExcalidrawAssets.js",
     "build:parcel": "tsc && parcel build --no-autoinstall",
-    "build": "yarn clean && yarn build:parcel && yarn build:assets && yarn build:excalidraw-assets",
+    "build": "yarn clean && yarn build:check-precached-excalidraw-assets && yarn build:parcel && yarn build:assets:misc && yarn build:assets:excalidraw",
     "start": "parcel --no-autoinstall"
   },
   "dependencies": {
@@ -25,15 +26,19 @@
     "@fortawesome/free-brands-svg-icons": "^5.15.4",
     "@fortawesome/free-solid-svg-icons": "^5.15.4",
     "@fortawesome/react-fontawesome": "^0.1.16",
+    "@parcel/service-worker": "^2.0.1",
     "react": "^17.0.2",
-    "react-dom": "^17.0.2"
+    "react-dom": "^17.0.2",
+    "workbox-precaching": "^6.4.0"
   },
   "devDependencies": {
-    "@parcel/packager-raw-url": "^2.0.0",
-    "@parcel/transformer-webmanifest": "^2.0.0",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
-    "parcel": "^2.0.0",
+    "@parcel/packager-raw-url": "^2.0.1",
+    "@parcel/transformer-webmanifest": "^2.0.1",
+    "@types/lodash": "^4.14.176",
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
+    "lodash": "^4.17.21",
+    "parcel": "^2.0.1",
     "typescript": "^4.4.4"
   }
 }
