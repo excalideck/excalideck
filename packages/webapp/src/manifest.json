@@ -1,25 +1,42 @@
 {
   "short_name": "Excalideck",
-  "name": "Excalideck",
+  "name": "Excalideck | Weapon for Legendary Slides",
+  "description": "Excalideck is an app for authoring slide decks that look hand-drawn.",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "theme_color": "#82c91e",
+  "background_color": "#ffffff",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "src": "./assets/parcel/favicon.ico",
+      "type": "image/x-icon",
+      "sizes": "48x48 32x32 16x16",
+      "purpose": "any"
     },
     {
-      "src": "logo192.png",
+      "src": "./assets/parcel/maskable-logo192.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
-      "src": "logo512.png",
+      "src": "./assets/parcel/maskable-logo512.png",
       "type": "image/png",
-      "sizes": "512x512"
+      "sizes": "512x512",
+      "purpose": "any maskable"
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "screenshots": [
+    {
+      "src": "./assets/parcel/homepage-screenshot.png",
+      "type": "image/png",
+      "sizes": "3584x2036"
+    },
+    {
+      "src": "./assets/parcel/app-screenshot.png",
+      "type": "image/jpg",
+      "sizes": "3584x2036"
+    }
+  ]
 }

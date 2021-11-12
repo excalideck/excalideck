@@ -664,13 +664,17 @@ __metadata:
     "@fortawesome/free-solid-svg-icons": ^5.15.4
     "@fortawesome/react-fontawesome": ^0.1.16
     "@parcel/packager-raw-url": ^2.0.0
+    "@parcel/service-worker": ^2.0.1
     "@parcel/transformer-webmanifest": ^2.0.0
+    "@types/lodash": ^4.14.176
     "@types/react": ^17.0.33
     "@types/react-dom": ^17.0.10
+    lodash: ^4.17.21
     parcel: ^2.0.0
     react: ^17.0.2
     react-dom: ^17.0.2
     typescript: ^4.4.4
+    workbox-precaching: ^6.4.0
   languageName: unknown
   linkType: soft
 
@@ -1591,6 +1595,13 @@ __metadata:
     "@parcel/utils": ^2.0.0
     nullthrows: ^1.1.1
   checksum: 9d879881bccafab4cba968c6a54ebcf980ec9b0ca844472395cfc30c283ffac02a1d8d04a098138e5d67ac0ab15da3fda8961d1691c2cca54afc57c5d11fc644
+  languageName: node
+  linkType: hard
+
+"@parcel/service-worker@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "@parcel/service-worker@npm:2.0.1"
+  checksum: 57a10cc5f8f17d6cd2c75e3cfc1bbb1e3f6ff368d4e422c10f25ed1c5c1dd5f6395a931a476d633073a1dc8ccf5cb4ad45ca712887a4ffb9f2a1674ee02c289b
   languageName: node
   linkType: hard
 
@@ -10164,6 +10175,42 @@ __metadata:
   version: 1.2.3
   resolution: "word-wrap@npm:1.2.3"
   checksum: 30b48f91fcf12106ed3186ae4fa86a6a1842416df425be7b60485de14bec665a54a68e4b5156647dec3a70f25e84d270ca8bc8cd23182ed095f5c7206a938c1f
+  languageName: node
+  linkType: hard
+
+"workbox-core@npm:6.4.0":
+  version: 6.4.0
+  resolution: "workbox-core@npm:6.4.0"
+  checksum: 30d3b45a6984d104f6eb089b4b045c28fe01d88c5abeb93f909deb431c77fcfe30a426c5dca8892131b8c81ef70d098abfdc9603a2a539c520fb8e0d8ae2ca40
+  languageName: node
+  linkType: hard
+
+"workbox-precaching@npm:^6.4.0":
+  version: 6.4.0
+  resolution: "workbox-precaching@npm:6.4.0"
+  dependencies:
+    workbox-core: 6.4.0
+    workbox-routing: 6.4.0
+    workbox-strategies: 6.4.0
+  checksum: ac6f1c1afbb77c70e3c73050c89b79a592fc2437466896b4253e648357075af3baa95f619c5c412aeb1b9c1b8799d520f02db2ec2b92f70f8f16f1cdfede486d
+  languageName: node
+  linkType: hard
+
+"workbox-routing@npm:6.4.0":
+  version: 6.4.0
+  resolution: "workbox-routing@npm:6.4.0"
+  dependencies:
+    workbox-core: 6.4.0
+  checksum: 6cc45a629c66cbce0857f63b1f649d8a3968cbe2b6e28a0b31072c181a5408777bb7a2c70b218f01c5c26ba0b7cc58c4c37f0a9b85f803868c62b403d3738a79
+  languageName: node
+  linkType: hard
+
+"workbox-strategies@npm:6.4.0":
+  version: 6.4.0
+  resolution: "workbox-strategies@npm:6.4.0"
+  dependencies:
+    workbox-core: 6.4.0
+  checksum: 2cf2e572a5b3c8757c5a27b261a8a71992cb2b4853671edbf1eb43bae6fce7c96757ac7fb92e89858e470afdc67735902c34cb1575472af6fc668ff83f971b34
   languageName: node
   linkType: hard
 

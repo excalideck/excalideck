@@ -1,8 +1,8 @@
-export default function initAssets() {
+export default function initExcalidrawAssets() {
     if (process.env["NODE_ENV"] === "production") {
-        (window as any).EXCALIDRAW_ASSET_PATH = "./";
-        preloadFont("./excalidraw-assets/Virgil.woff2");
-        preloadFont("./excalidraw-assets/Cascadia.woff2");
+        (window as any).EXCALIDRAW_ASSET_PATH = "./assets/";
+        preloadFont("./assets/excalidraw-assets/Virgil.woff2");
+        preloadFont("./assets/excalidraw-assets/Cascadia.woff2");
     } else {
         preloadFont(
             "https://unpkg.com/@excalidraw/excalidraw@0.10.0/dist/excalidraw-assets-dev/Virgil.woff2"
@@ -13,6 +13,8 @@ export default function initAssets() {
     }
 }
 
+const INIT_EXCALIDRAW_ASSETS_SCRIPT_ID = "init-excalidraw-assets";
+
 function preloadFont(fontUrl: string) {
     const link = document.createElement("link");
     link.setAttribute("rel", "preload");
@@ -22,6 +24,6 @@ function preloadFont(fontUrl: string) {
     link.setAttribute("crossorigin", "anonymous");
     document.head.insertBefore(
         link,
-        document.getElementById("init-assets")!.nextSibling
+        document.getElementById(INIT_EXCALIDRAW_ASSETS_SCRIPT_ID)!.nextSibling
     );
 }
