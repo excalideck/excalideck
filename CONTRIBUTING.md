@@ -36,7 +36,7 @@ From the project's root directory, you can run the following scripts:
   save and load Excalideck files
 - `@excalideck/slide-renderers`: contains renderers to render slides in
   different formats
-- `@excalideck/webapp`: contains the Excalideck webapp
+- `@excalideck/webapp`: contains the Excalideck progressive web app
 
 ## Conventions
 
@@ -46,7 +46,26 @@ From the project's root directory, you can run the following scripts:
 
 ## CI workflow
 
-When a commit is pushed, the CI server runs the automated QA checks.
+### Pull requests
 
-When a tag is pushed, the CI server - if QA checks succeed, and if approval is
-given by one of the maintainers - builds and publishes artifacts.
+When a PR is opened, and for each subsequent commit added to it, the CI server
+runs the QA checks and, if they succeed, (re)deploys the app to
+`https://preview.excalideck.com/PR/$PR_NUMBER`.
+
+### Commits to master
+
+When a commit is pushed to master, the CI server runs the QA checks and, if they
+succeed, deploys the app to `https://excalideck.com` (where it's configured to
+show the homepage) and `https://app.excalideck.com` (where it's configured to
+show the "workable" progressive web app).
+
+## Releasing a new version
+
+For the moment a release workflow has not yet been set up (see
+[issue #40](https://github.com/excalideck/excalideck/issues/40)).
+
+For now just:
+
+1. manually update the CHANGELOG with a descriptive entry that informs the user
+   of the app about the user-facing changes of the release
+1. commit the update with message `docs: update CHANGELOG`
