@@ -11,11 +11,11 @@
   "browserslist": "> 0.5%, last 2 versions, not dead",
   "scripts": {
     "clean": "rm -rf build dist",
-    "build:assets:other": "node scripts/copyOtherAssets.js",
+    "build:assets:misc": "node scripts/copyMiscAssets.js",
     "build:assets:excalidraw": "node scripts/copyExcalidrawAssets.js",
     "build:check-precached-excalidraw-assets": "node scripts/checkPrecachedExcalidrawAssets.js",
     "build:parcel": "tsc && parcel build --no-autoinstall",
-    "build": "yarn clean && yarn build:check-precached-excalidraw-assets && yarn build:parcel && yarn build:assets:other && yarn build:assets:excalidraw",
+    "build": "yarn clean && yarn build:check-precached-excalidraw-assets && yarn build:parcel && yarn build:assets:misc && yarn build:assets:excalidraw",
     "start": "parcel --no-autoinstall"
   },
   "dependencies": {
