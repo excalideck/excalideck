@@ -27,22 +27,22 @@
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
     "lru-cache": "^6.0.0",
-    "use-debounce": "^7.0.0"
+    "use-debounce": "^7.0.1"
   },
   "peerDependencies": {
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
-    "@parcel/packager-ts": "^2.0.0",
-    "@parcel/transformer-typescript-types": "^2.0.0",
+    "@parcel/packager-ts": "^2.0.1",
+    "@parcel/transformer-typescript-types": "^2.0.1",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.176",
     "@types/lru-cache": "^5.1.1",
-    "@types/react": "^17.0.33",
-    "@types/react-dom": "^17.0.10",
+    "@types/react": "^17.0.34",
+    "@types/react-dom": "^17.0.11",
     "jest": "^27.3.1",
-    "parcel": "^2.0.0",
+    "parcel": "^2.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "ts-jest": "^27.0.7",
