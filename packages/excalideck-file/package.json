@@ -9,12 +9,16 @@
     "clean": "rm -rf build",
     "build": "yarn clean && tsc"
   },
-  "devDependencies": {
-    "typescript": "^4.4.4"
-  },
   "dependencies": {
     "@excalideck/deck": "workspace:*",
     "@excalideck/slide-renderers": "workspace:*",
     "pdf-lib": "patch:pdf-lib@npm:1.17.0#../../.yarn/patches/pdf-lib-npm-1.17.0-927844fb44"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
   }
 }

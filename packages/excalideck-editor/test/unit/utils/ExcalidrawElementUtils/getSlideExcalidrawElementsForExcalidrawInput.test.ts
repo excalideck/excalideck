@@ -1,6 +1,6 @@
 import { Deck } from "@excalideck/deck";
-import ExcalidrawElementUtils from "../../../src/utils/ExcalidrawElementUtils";
-import PrintableAreaUtils from "../../../src/utils/PrintableAreaUtils";
+import ExcalidrawElementUtils from "../../../../src/utils/ExcalidrawElementUtils";
+import PrintableAreaUtils from "../../../../src/utils/PrintableAreaUtils";
 
 describe("ExcalidrawElementUtils.getSlideExcalidrawElementsForExcalidrawInput", () => {
     describe("when slide.shouldRenderWithCommonExcalidrawElements = true", () => {

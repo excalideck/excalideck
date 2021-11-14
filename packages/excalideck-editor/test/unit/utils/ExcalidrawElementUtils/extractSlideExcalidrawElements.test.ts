@@ -1,5 +1,5 @@
-import ExcalidrawElementUtils from "../../../src/utils/ExcalidrawElementUtils";
-import PrintableAreaUtils from "../../../src/utils/PrintableAreaUtils";
+import ExcalidrawElementUtils from "../../../../src/utils/ExcalidrawElementUtils";
+import PrintableAreaUtils from "../../../../src/utils/PrintableAreaUtils";
 
 describe("ExcalidrawElementUtils.extractSlideExcalidrawElements", () => {
     it("removes the printable area and common elements from the passed-in excalidraw elements", () => {

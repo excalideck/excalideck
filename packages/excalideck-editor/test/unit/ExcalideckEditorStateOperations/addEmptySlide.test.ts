@@ -1,7 +1,7 @@
 import { DeckOperations } from "@excalideck/deck";
-import ExcalideckEditorState from "../../src/entities/ExcalideckEditorState";
-import View from "../../src/entities/View";
-import ExcalideckEditorStateOperations from "../../src/ExcalideckEditorStateOperations";
+import ExcalideckEditorState from "../../../src/entities/ExcalideckEditorState";
+import View from "../../../src/entities/View";
+import ExcalideckEditorStateOperations from "../../../src/ExcalideckEditorStateOperations";
 
 describe("ExcalideckEditorStateOperations.addEmptySlide", () => {
     it("adds an empty slide to the deck and makes it the selected slide", () => {

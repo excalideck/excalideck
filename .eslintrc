@@ -7,11 +7,9 @@
   "plugins": ["@typescript-eslint", "react", "jest"],
   "extends": [
     "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
     "plugin:react/recommended",
     "plugin:react/jsx-runtime",
-    "plugin:react-hooks/recommended",
-    "plugin:jest/recommended"
+    "plugin:react-hooks/recommended"
   ],
   "parserOptions": {
     "ecmaFeatures": { "jsx": true }
@@ -20,8 +18,27 @@
     "react": { "version": "detect" }
   },
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
     "react/prop-types": "off"
-  }
+  },
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "env": {
+        "node": true
+      }
+    },
+    {
+      "files": ["**/*.ts?(x)"],
+      "extends": ["plugin:@typescript-eslint/recommended"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off",
+        "@typescript-eslint/no-non-null-assertion": "off"
+      }
+    },
+    {
+      "files": ["**/test/**/*.test.*"],
+      "excludedFiles": "**/test/scenario/**/*",
+      "extends": ["plugin:jest/recommended"]
+    }
+  ]
 }

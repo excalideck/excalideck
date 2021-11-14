@@ -11,7 +11,9 @@
     "clean": "rm -rf build dist",
     "build": "yarn clean && tsc && parcel build --no-autoinstall",
     "start": "parcel dev/index.html --no-autoinstall",
-    "test": "jest"
+    "test:scenario": "playwright install --with-deps && playwright test",
+    "test:unit": "jest",
+    "test": "yarn test:unit && yarn test:scenario"
   },
   "dependencies": {
     "@dnd-kit/core": "^4.0.1",
@@ -36,6 +38,7 @@
   "devDependencies": {
     "@parcel/packager-ts": "^2.0.1",
     "@parcel/transformer-typescript-types": "^2.0.1",
+    "@playwright/test": "^1.16.3",
     "@types/jest": "^27.0.2",
     "@types/lodash": "^4.14.176",
     "@types/lru-cache": "^5.1.1",
