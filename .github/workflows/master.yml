@@ -30,6 +30,7 @@ jobs:
           name: scenario-test-results
           path: |
             **/test-results/**/*
+            !**/node_modules/**/*
 
   deploy:
     needs: qa
