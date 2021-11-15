@@ -1,5 +1,7 @@
 import { expect, Page, test } from "@playwright/test";
 import { castArray } from "lodash";
+import waitForChange from "./waitForChange";
+import waitUntilStable from "./waitUntilStable";
 
 export default class ExcalideckEditorPage {
     constructor(private page: Page) {}
@@ -173,56 +175,18 @@ export default class ExcalideckEditorPage {
         return viewportSize!;
     }
 
+    /**
+     * Waits for miniatures to be updated. If miniatures aren't updated within
+     * `options.timeout` milliseconds, the method fails.
+     */
     private async waitForNextMiniaturesUpdate(options = { timeout: 1_000 }) {
         const slideMiniaturesHandle = await this.page.$(
             '[data-testid="SlidesControl"]'
         );
-
-        if (slideMiniaturesHandle === null) {
-            // We're in the Settings view, where there are no miniatures
-            return;
+        if (slideMiniaturesHandle !== null) {
+            // We're in the Slides view, where there are miniatures
+            await slideMiniaturesHandle!.evaluate(waitForChange, options);
         }
-
-        await slideMiniaturesHandle!.evaluate(
-            (div, opts) =>
-                new Promise<void>((resolve, reject) => {
-                    let timeoutTimeout: number;
-                    function startTimeoutTimeout() {
-                        timeoutTimeout = window.setTimeout(
-                            onTimeout,
-                            opts.timeout
-                        );
-                    }
-                    function stopTimeoutTimeout() {
-                        window.clearTimeout(timeoutTimeout);
-                    }
-
-                    const miniaturesMutationObserver =
-                        new window.MutationObserver(onMiniaturesUpdate);
-
-                    function onTimeout() {
-                        reject(
-                            new Error(
-                                "excalideckEditorPage.waitForNextMiniaturesUpdate: Timeout while waiting for next miniature update"
-                            )
-                        );
-                        miniaturesMutationObserver.disconnect();
-                    }
-
-                    function onMiniaturesUpdate() {
-                        stopTimeoutTimeout();
-                        miniaturesMutationObserver.disconnect();
-                        resolve();
-                    }
-
-                    miniaturesMutationObserver.observe(div, {
-                        subtree: true,
-                        childList: true,
-                    });
-                    startTimeoutTimeout();
-                }),
-            options
-        );
     }
 
     /**
@@ -236,70 +200,8 @@ export default class ExcalideckEditorPage {
         const slideMiniaturesHandle = await this.page.$(
             '[data-testid="SlidesControl"]'
         );
-
-        if (slideMiniaturesHandle === null) {
-            // We're in the Settings view, where there are no miniatures
-            return;
-        }
-
-        await slideMiniaturesHandle!.evaluate(
-            (div, opts) =>
-                new Promise<void>((resolve, reject) => {
-                    let timeoutTimeout: number;
-                    function startTimeoutTimeout() {
-                        timeoutTimeout = window.setTimeout(
-                            onTimeout,
-                            opts.timeout
-                        );
-                    }
-                    function stopTimeoutTimeout() {
-                        window.clearTimeout(timeoutTimeout);
-                    }
-
-                    let stabilityTimeout: number;
-                    function startStabilityTimeout() {
-                        stabilityTimeout = window.setTimeout(
-                            onStable,
-                            opts.stableFor
-                        );
-                    }
-                    function stopStabilityTimeout() {
-                        window.clearTimeout(stabilityTimeout);
-                    }
-                    function restartStabilityTimeout() {
-                        stopStabilityTimeout();
-                        startStabilityTimeout();
-                    }
-
-                    const mutationObserver = new window.MutationObserver(
-                        restartStabilityTimeout
-                    );
-
-                    function onStable() {
-                        stopTimeoutTimeout();
-                        mutationObserver.disconnect();
-                        resolve();
-                    }
-
-                    function onTimeout() {
-                        stopStabilityTimeout();
-                        mutationObserver.disconnect();
-                        reject(
-                            new Error(
-                                "excalideckEditorPage.waitForStableMiniatures: Timeout while waiting for stable miniatures"
-                            )
-                        );
-                    }
-
-                    mutationObserver.observe(div, {
-                        subtree: true,
-                        childList: true,
-                    });
-                    startTimeoutTimeout();
-                    startStabilityTimeout();
-                }),
-            options
-        );
+        expect(slideMiniaturesHandle).not.toBeNull();
+        await slideMiniaturesHandle!.evaluate(waitUntilStable, options);
     }
 
     private nextAvailableSnapshotId = 0;
