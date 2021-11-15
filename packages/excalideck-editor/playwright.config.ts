@@ -7,7 +7,7 @@ const IS_CI = process.env["CI"] === "true";
 const config: PlaywrightTestConfig = {
     testDir: "test/scenario",
     forbidOnly: IS_CI,
-    retries: IS_CI ? 2 : 0,
+    retries: IS_CI ? 4 : 0,
     webServer: {
         command: "yarn start",
         port: 1234,
