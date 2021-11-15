@@ -11,7 +11,7 @@
     "clean": "rm -rf build dist",
     "build": "yarn clean && tsc && parcel build --no-autoinstall",
     "start": "parcel dev/index.html --no-autoinstall",
-    "test:scenario": "playwright install --with-deps && playwright test",
+    "test:scenario": "playwright install --with-deps > /dev/null && playwright test",
     "test:unit": "jest",
     "test": "yarn test:unit && yarn test:scenario"
   },

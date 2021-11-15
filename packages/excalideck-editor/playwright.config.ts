@@ -13,8 +13,9 @@ const config: PlaywrightTestConfig = {
         port: 1234,
     },
     use: {
-        trace: "retain-on-failure",
+        trace: "on-first-retry",
     },
+    reporter: IS_CI ? [["github"], ["list"]] : "list",
     projects: compact([
         {
             name: "chromium",
