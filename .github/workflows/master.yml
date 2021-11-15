@@ -24,10 +24,11 @@ jobs:
       - name: Test
         run: yarn test
       - name: Save scenario test results
-        if: failure()
+        if: true
         uses: actions/upload-artifact@v2
         with:
           name: scenario-test-results
+          if-no-files-found: ignore
           path: |
             **/test-results/**/*
             !**/node_modules/**/*
