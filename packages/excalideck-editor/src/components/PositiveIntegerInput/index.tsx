@@ -1,8 +1,7 @@
-import { ReactNode } from "react";
 import "./index.css";
 
 interface Props {
-    label: ReactNode;
+    label: string;
     value: number;
     onChange: (newValue: number) => void;
 }
@@ -19,6 +18,7 @@ export default function PositiveIntegerInput({
                 value={value}
                 min={1}
                 onChange={(event) => onChange(parseInt(event.target.value, 10))}
+                aria-label={label}
             />
         </div>
     );

@@ -7,7 +7,11 @@ export interface Props {
 }
 export default function AddEmptySlideButton({ onClick }: Props) {
     return (
-        <button className="AddEmptySlideButton" onClick={() => onClick()}>
+        <button
+            className="AddEmptySlideButton"
+            title="Add slide"
+            onClick={() => onClick()}
+        >
             <FontAwesomeIcon icon={faPlus} />
         </button>
     );

@@ -18,7 +18,7 @@ export default function SlidesControl({
     onSelectSlide,
 }: Props) {
     return (
-        <div className="SlidesControl">
+        <div className="SlidesControl" data-testid="SlidesControl">
             <SlideMiniatures
                 deck={deck}
                 onMoveSlide={onMoveSlide}

@@ -23,6 +23,14 @@ jobs:
         run: yarn build
       - name: Test
         run: yarn test
+      - name: Save scenario test results
+        if: failure()
+        uses: actions/upload-artifact@v2
+        with:
+          name: scenario-test-results
+          path: |
+            **/test-results/**/*
+            !**/node_modules/**/*
 
   deploy:
     needs: qa

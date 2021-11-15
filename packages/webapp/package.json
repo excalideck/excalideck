@@ -34,7 +34,7 @@
   "devDependencies": {
     "@parcel/packager-raw-url": "^2.0.1",
     "@parcel/transformer-webmanifest": "^2.0.1",
-    "@types/lodash": "^4.14.176",
+    "@types/lodash": "^4.14.177",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
     "lodash": "^4.17.21",
