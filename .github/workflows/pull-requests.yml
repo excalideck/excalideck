@@ -21,7 +21,7 @@ jobs:
       - name: Test
         run: yarn test
       - name: Save scenario test results
-        if: true
+        if: ${{ true }}
         uses: actions/upload-artifact@v2
         with:
           name: scenario-test-results
