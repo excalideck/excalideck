@@ -779,7 +779,7 @@ __metadata:
     "@types/jest": ^27.0.2
     "@types/lodash": ^4.14.177
     "@types/lru-cache": ^5.1.1
-    "@types/react": ^17.0.34
+    "@types/react": ^17.0.35
     "@types/react-dom": ^17.0.11
     clsx: ^1.1.1
     jest: ^27.3.1
@@ -822,7 +822,7 @@ __metadata:
     "@parcel/packager-ts": ^2.0.1
     "@parcel/transformer-typescript-types": ^2.0.1
     "@types/lodash": ^4.14.177
-    "@types/react": ^17.0.34
+    "@types/react": ^17.0.35
     "@types/react-dom": ^17.0.11
     lodash: ^4.17.21
     parcel: ^2.0.1
@@ -883,14 +883,14 @@ __metadata:
     "@parcel/service-worker": ^2.0.1
     "@parcel/transformer-webmanifest": ^2.0.1
     "@types/lodash": ^4.14.177
-    "@types/react": ^17.0.34
+    "@types/react": ^17.0.35
     "@types/react-dom": ^17.0.11
     lodash: ^4.17.21
     parcel: ^2.0.1
     react: ^17.0.2
     react-dom: ^17.0.2
     typescript: ^4.4.4
-    workbox-precaching: ^6.4.0
+    workbox-precaching: ^6.4.1
   languageName: unknown
   linkType: soft
 
@@ -2410,7 +2410,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^17.0.34":
+"@types/react@npm:*":
   version: 17.0.34
   resolution: "@types/react@npm:17.0.34"
   dependencies:
@@ -2418,6 +2418,17 @@ __metadata:
     "@types/scheduler": "*"
     csstype: ^3.0.2
   checksum: 16729ad7d50922ccbf8eb93874d7781dc2f1c64edc78134b5edc7154839d41e9fe320eb1c11ad2d1c9bf28b99cb1febda344509c1fda025955a5c2b43c688c8f
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^17.0.35":
+  version: 17.0.35
+  resolution: "@types/react@npm:17.0.35"
+  dependencies:
+    "@types/prop-types": "*"
+    "@types/scheduler": "*"
+    csstype: ^3.0.2
+  checksum: 33e2bf8068ccc5330f089f5d4bee54649c2d5b512edee4a9e44c113271a69ea8c71ddbd3103b205eb971fd4c358e9f69d707df08bec90b3c33492db374614eb7
   languageName: node
   linkType: hard
 
@@ -10690,39 +10701,39 @@ __metadata:
   languageName: node
   linkType: hard
 
-"workbox-core@npm:6.4.0":
-  version: 6.4.0
-  resolution: "workbox-core@npm:6.4.0"
-  checksum: 30d3b45a6984d104f6eb089b4b045c28fe01d88c5abeb93f909deb431c77fcfe30a426c5dca8892131b8c81ef70d098abfdc9603a2a539c520fb8e0d8ae2ca40
+"workbox-core@npm:6.4.1":
+  version: 6.4.1
+  resolution: "workbox-core@npm:6.4.1"
+  checksum: 0e58c7fbf0de50b3e805227498523a6ca9790936ed7b88cc1572a9e49e8bb3b5e47bac2a5bf734d4f255a9d28ae356bedbe79df79d024c0d4598867919adc48b
   languageName: node
   linkType: hard
 
-"workbox-precaching@npm:^6.4.0":
-  version: 6.4.0
-  resolution: "workbox-precaching@npm:6.4.0"
+"workbox-precaching@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "workbox-precaching@npm:6.4.1"
   dependencies:
-    workbox-core: 6.4.0
-    workbox-routing: 6.4.0
-    workbox-strategies: 6.4.0
-  checksum: ac6f1c1afbb77c70e3c73050c89b79a592fc2437466896b4253e648357075af3baa95f619c5c412aeb1b9c1b8799d520f02db2ec2b92f70f8f16f1cdfede486d
+    workbox-core: 6.4.1
+    workbox-routing: 6.4.1
+    workbox-strategies: 6.4.1
+  checksum: 03e4a2fdf3ac226321fc5df252a8be8e1154648228d44b4ca4ceb32081bb8d83348ffe620ba69b11eca939746d0902dc56bda4e9309e3f65d3c16005cd42bfd6
   languageName: node
   linkType: hard
 
-"workbox-routing@npm:6.4.0":
-  version: 6.4.0
-  resolution: "workbox-routing@npm:6.4.0"
+"workbox-routing@npm:6.4.1":
+  version: 6.4.1
+  resolution: "workbox-routing@npm:6.4.1"
   dependencies:
-    workbox-core: 6.4.0
-  checksum: 6cc45a629c66cbce0857f63b1f649d8a3968cbe2b6e28a0b31072c181a5408777bb7a2c70b218f01c5c26ba0b7cc58c4c37f0a9b85f803868c62b403d3738a79
+    workbox-core: 6.4.1
+  checksum: 0341ec88d5657f5af494314d635d93ab1f8ef9e6e719745dfe3507904587814ed08acb458dcbba9fae0473b67b9d8f799be849a380c3729515c0dffcb99a48c0
   languageName: node
   linkType: hard
 
-"workbox-strategies@npm:6.4.0":
-  version: 6.4.0
-  resolution: "workbox-strategies@npm:6.4.0"
+"workbox-strategies@npm:6.4.1":
+  version: 6.4.1
+  resolution: "workbox-strategies@npm:6.4.1"
   dependencies:
-    workbox-core: 6.4.0
-  checksum: 2cf2e572a5b3c8757c5a27b261a8a71992cb2b4853671edbf1eb43bae6fce7c96757ac7fb92e89858e470afdc67735902c34cb1575472af6fc668ff83f971b34
+    workbox-core: 6.4.1
+  checksum: 8c5413230c09c79b8045157a70914d8a8ca813011b8d8d117b23999f2fee329ce181ac0b5f1e85a6af85f3693f9505fdb37fe76a0718a554a199cecbf417c591
   languageName: node
   linkType: hard
 

@@ -7,6 +7,11 @@ import { isCanvasRendered, renderCanvas } from "./canvasUtils";
 import "./index.css";
 import slideCanvasCache from "./slideCanvasCache";
 
+const SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE = parseInt(
+    process.env["SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE"] ?? "500",
+    10
+);
+
 interface Props {
     deck: Deck;
     slide: Slide;
@@ -15,8 +20,14 @@ interface Props {
 export default function SlideMiniatureImage({ deck, slide }: Props) {
     const containerRef = useRef<HTMLDivElement>(null);
 
-    const [debouncedDeck] = useDebounce(deck, 500);
-    const [debouncedSlide] = useDebounce(slide, 500);
+    const [debouncedDeck] = useDebounce(
+        deck,
+        SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE
+    );
+    const [debouncedSlide] = useDebounce(
+        slide,
+        SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE
+    );
 
     useEffect(() => {
         // When no canvas has been rendered yet (i.e. it's the first render),

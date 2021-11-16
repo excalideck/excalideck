@@ -1,7 +1,5 @@
 import { expect, Page, test } from "@playwright/test";
 import { castArray } from "lodash";
-import waitForChange from "./waitForChange";
-import waitUntilStable from "./waitUntilStable";
 
 export default class ExcalideckEditorPage {
     constructor(private page: Page) {}
@@ -19,7 +17,6 @@ export default class ExcalideckEditorPage {
     async goToSlides() {
         await test.step("Go to Slides view", async () => {
             await this.page.click("text=/slides/i");
-            await this.waitForStableMiniatures();
         });
     }
 
@@ -58,10 +55,11 @@ export default class ExcalideckEditorPage {
 
     async selectSlide(index: number) {
         await test.step(`Select slide at index ${index}`, async () => {
-            await this.page.click(
-                `[data-testid^="SortableSlideMiniature" i]:nth-child(${
-                    index + 1
-                })`
+            const sortableSlideMiniatureSelector =
+                this.getSelectorForSlideMiniature(index);
+            await this.page.click(sortableSlideMiniatureSelector);
+            await this.page.waitForSelector(
+                `${sortableSlideMiniatureSelector} .SelectedSlideMiniature`
             );
         });
     }
@@ -71,17 +69,10 @@ export default class ExcalideckEditorPage {
             `Move slide at index ${fromIndex} to index ${toIndex}`,
             async () => {
                 await this.page.dragAndDrop(
-                    `[data-testid^="SortableSlideMiniature" i]:nth-child(${
-                        fromIndex + 1
-                    })`,
-                    `[data-testid^="SortableSlideMiniature" i]:nth-child(${
-                        toIndex + 1
-                    })`
+                    this.getSelectorForSlideMiniature(fromIndex),
+                    this.getSelectorForSlideMiniature(toIndex),
+                    { targetPosition: { x: 10, y: 10 } }
                 );
-                await this.waitForStableMiniatures({
-                    stableFor: 3 * 15,
-                    timeout: 6 * 15,
-                });
             }
         );
     }
@@ -103,7 +94,6 @@ export default class ExcalideckEditorPage {
                 this.page.locator('button[title*="include common elements" i]')
             ).toHaveAttribute("aria-checked", "true");
             await this.page.click('button[title*="include common elements" i]');
-            await this.waitForNextMiniaturesUpdate();
         });
     }
 
@@ -131,6 +121,7 @@ export default class ExcalideckEditorPage {
                 .join(", "),
         ].join(" ");
         await test.step(stepTitle, async () => {
+            await this.waitForSlideMiniatureImagesRender();
             expect(await this.page.screenshot()).toMatchSnapshot(
                 this.issueNextSnapshotName()
             );
@@ -163,8 +154,8 @@ export default class ExcalideckEditorPage {
                 await this.page.mouse.down();
                 await this.page.mouse.move(initialX + 200, initialY + 100);
                 await this.page.mouse.up();
-                // Wait for the miniatures to update
-                await this.waitForNextMiniaturesUpdate();
+                // Wait for changes to be propagated
+                await this.waitForExcalidrawElementsInputChange();
             }
         );
     }
@@ -175,33 +166,12 @@ export default class ExcalideckEditorPage {
         return viewportSize!;
     }
 
-    /**
-     * Waits for miniatures to be updated. If miniatures aren't updated within
-     * `options.timeout` milliseconds, the method fails.
-     */
-    private async waitForNextMiniaturesUpdate(options = { timeout: 1_000 }) {
-        const slideMiniaturesHandle = await this.page.$(
-            '[data-testid="SlidesControl"]'
-        );
-        if (slideMiniaturesHandle !== null) {
-            // We're in the Slides view, where there are miniatures
-            await slideMiniaturesHandle!.evaluate(waitForChange, options);
-        }
+    private async waitForSlideMiniatureImagesRender(timeout = 15) {
+        this.page.waitForTimeout(timeout);
     }
 
-    /**
-     * Waits for miniatures to be stable, i.e. not changed for at least
-     * `options.stableFor` milliseconds. If miniatures don't stabilize within
-     * `options.timeout` milliseconds, the method fails.
-     */
-    private async waitForStableMiniatures(
-        options = { stableFor: 1_000, timeout: 10_000 }
-    ) {
-        const slideMiniaturesHandle = await this.page.$(
-            '[data-testid="SlidesControl"]'
-        );
-        expect(slideMiniaturesHandle).not.toBeNull();
-        await slideMiniaturesHandle!.evaluate(waitUntilStable, options);
+    private async waitForExcalidrawElementsInputChange(timeout = 15) {
+        this.page.waitForTimeout(timeout);
     }
 
     private nextAvailableSnapshotId = 0;
@@ -209,5 +179,11 @@ export default class ExcalideckEditorPage {
         const resultName = `snapshot-${this.nextAvailableSnapshotId}.png`;
         this.nextAvailableSnapshotId += 1;
         return resultName;
+    }
+
+    private getSelectorForSlideMiniature(index: number): string {
+        return `[data-testid^="SortableSlideMiniature" i]:nth-child(${
+            index + 1
+        })`;
     }
 }

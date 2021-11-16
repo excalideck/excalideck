@@ -11,6 +11,12 @@ const config: PlaywrightTestConfig = {
     webServer: {
         command: "yarn start",
         port: 1234,
+        env: {
+            EXCALIDRAW_ELEMENTS_INPUT_ONCHANGE_CHECK_INTERVAL: "1",
+            SLIDE_MINIATURES_DROP_TRANSITION_DURATION: "0",
+            SORTABLE_SLIDE_MINIATURE_MOVE_TRANSITION_DURATION: "0",
+            SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE: "1",
+        },
     },
     use: {
         trace: "on-first-retry",
