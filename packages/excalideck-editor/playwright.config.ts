@@ -19,7 +19,7 @@ const config: PlaywrightTestConfig = {
         },
     },
     use: {
-        trace: "on-first-retry",
+        trace: "retain-on-failure",
     },
     reporter: IS_CI ? [["github"], ["list"]] : "list",
     projects: compact([
