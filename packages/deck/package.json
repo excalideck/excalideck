@@ -11,7 +11,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
+    "@types/jest": "^27.0.3",
     "@types/lodash": "^4.14.177",
     "jest": "^27.3.1",
     "lodash": "^4.17.21",

@@ -682,9 +682,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@dnd-kit/core@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "@dnd-kit/core@npm:4.0.1"
+"@dnd-kit/core@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "@dnd-kit/core@npm:4.0.2"
   dependencies:
     "@dnd-kit/accessibility": ^3.0.0
     "@dnd-kit/utilities": ^3.0.0
@@ -692,20 +692,20 @@ __metadata:
   peerDependencies:
     react: ">=16.8.0"
     react-dom: ">=16.8.0"
-  checksum: f2425296407987cc1ba67eeb355d2df4edee0b28bd85bd8bfd791973e20ba468acb827da8259ba46d58f62cab1cc560fb4e5b52bb4efdd1ca3424c50b72c21a3
+  checksum: 010044951ecde966d2cc2d8098d10469d2277244a8b56dd2c06e97dc1a36c0747b6bbdddfadf35d78c33238ebc4365dcda1c2d0d80f2bee097d6812566ff9bfe
   languageName: node
   linkType: hard
 
-"@dnd-kit/sortable@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@dnd-kit/sortable@npm:5.0.0"
+"@dnd-kit/sortable@npm:^5.1.0":
+  version: 5.1.0
+  resolution: "@dnd-kit/sortable@npm:5.1.0"
   dependencies:
     "@dnd-kit/utilities": ^3.0.0
     tslib: ^2.0.0
   peerDependencies:
-    "@dnd-kit/core": ^4.0.0
+    "@dnd-kit/core": ^4.0.2
     react: ">=16.8.0"
-  checksum: 33761b05a2393f2cfd50fdb06a0c569aa5024a0b260def2f65388dee62b9d062062dfc6f03c0630c184377993498ade9e1267bfa362bf5aa3cdbbe0a2c9d5a58
+  checksum: f2f687a70dc52894e569d6377d7cb2e5e1761f0164cf08a1d0c8c3df43d6e88fd2858e0f5dfc8a5670fac8f6ce9a2ed91b0aeb8837f44d067acf21d1baf6a55e
   languageName: node
   linkType: hard
 
@@ -748,7 +748,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@excalideck/deck@workspace:packages/deck"
   dependencies:
-    "@types/jest": ^27.0.2
+    "@types/jest": ^27.0.3
     "@types/lodash": ^4.14.177
     jest: ^27.3.1
     lodash: ^4.17.21
@@ -763,8 +763,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@excalideck/excalideck-editor@workspace:packages/excalideck-editor"
   dependencies:
-    "@dnd-kit/core": ^4.0.1
-    "@dnd-kit/sortable": ^5.0.0
+    "@dnd-kit/core": ^4.0.2
+    "@dnd-kit/sortable": ^5.1.0
     "@dnd-kit/utilities": ^3.0.0
     "@excalideck/deck": "workspace:*"
     "@excalideck/slide-renderers": "workspace:*"
@@ -776,7 +776,7 @@ __metadata:
     "@parcel/packager-ts": ^2.0.1
     "@parcel/transformer-typescript-types": ^2.0.1
     "@playwright/test": ^1.16.3
-    "@types/jest": ^27.0.2
+    "@types/jest": ^27.0.3
     "@types/lodash": ^4.14.177
     "@types/lru-cache": ^5.1.1
     "@types/react": ^17.0.35
@@ -2343,13 +2343,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:^27.0.2":
-  version: 27.0.2
-  resolution: "@types/jest@npm:27.0.2"
+"@types/jest@npm:^27.0.3":
+  version: 27.0.3
+  resolution: "@types/jest@npm:27.0.3"
   dependencies:
     jest-diff: ^27.0.0
     pretty-format: ^27.0.0
-  checksum: 814ad5f5d2f277849f47e52906da4b745758e555630fc8cb46a071bde648eefeffb1b35710c530a8cea7fc4ea7c1d813812c120484bf7902ab6c5e473cdd49c9
+  checksum: 3683a9945821966f6dccddf337219a5d682633687c9d30df859223db553589f63e9b2c34e69f0cc845c86ffcf115742f25c12ea03c8d33d2244890fdc0af61e2
   languageName: node
   linkType: hard
 
