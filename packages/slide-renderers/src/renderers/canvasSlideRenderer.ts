@@ -6,6 +6,7 @@ import {
     PrintableArea,
 } from "@excalideck/deck";
 import { exportToCanvas } from "@excalidraw/excalidraw";
+import { nanoid } from "nanoid";
 import SlideRenderer from "../SlideRenderer";
 import lruMemoize from "../utils/lruMemoize";
 
@@ -37,6 +38,9 @@ const canvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
                 printableArea.width,
                 printableArea.height
             );
+            slideCanvas.attributes.setNamedItem;
+            // Assign a random id so tests can distinguish between canvases
+            slideCanvas.setAttribute("data-testid", nanoid());
 
             return slideCanvas;
         },

@@ -24,6 +24,10 @@ function cloneCanvas(canvas: HTMLCanvasElement): HTMLCanvasElement {
     const clone = document.createElement("canvas");
     clone.width = canvas.width;
     clone.height = canvas.height;
+    const dataTestid = canvas.getAttribute("data-testid");
+    if (dataTestid) {
+        clone.setAttribute("data-testid", dataTestid);
+    }
     clone.getContext("2d")!.drawImage(canvas, 0, 0);
     return clone;
 }

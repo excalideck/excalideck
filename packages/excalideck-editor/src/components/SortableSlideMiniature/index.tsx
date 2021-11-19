@@ -35,7 +35,6 @@ export default function SortableSlideMiniature({
     return (
         <div
             className="SortableSlideMiniature"
-            data-testid={`SortableSlideMiniature-${id}`}
             ref={setNodeRef}
             style={omitNilCssRules({
                 transform: CSS.Transform.toString(transform),

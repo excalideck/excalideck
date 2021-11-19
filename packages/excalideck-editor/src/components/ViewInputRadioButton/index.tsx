@@ -16,7 +16,9 @@ export default function ViewInputRadioButton({
         <div
             className={clsx(
                 "ViewInputRadioButton",
-                active && "ActiveViewInputRadioButton"
+                active
+                    ? "ActiveViewInputRadioButton"
+                    : "InactiveViewInputRadioButton"
             )}
             role="button"
             onClick={() => onClick()}
