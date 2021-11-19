@@ -68,6 +68,11 @@ import "./index.css";
 // a slide's drawing board when changing slides. TODO: expose an API to
 // keep-track-of and restore the undo/redo history.
 
+const EXCALIDRAW_ELEMENTS_INPUT_ONCHANGE_CHECK_INTERVAL = parseInt(
+    process.env["EXCALIDRAW_ELEMENTS_INPUT_ONCHANGE_CHECK_INTERVAL"] ?? "100",
+    10
+);
+
 interface Props {
     printableArea: PrintableArea;
     initialValue: ExcalidrawElement[];
@@ -125,7 +130,7 @@ export default function ExcalidrawElementsInput({
                 previousHashRef.current = currentHash;
                 onChange(cloneDeep(currentElements as any));
             }
-        }, 100);
+        }, EXCALIDRAW_ELEMENTS_INPUT_ONCHANGE_CHECK_INTERVAL);
         return () => clearInterval(intervalId);
     }, [onChange]);
 

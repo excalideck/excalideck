@@ -6,6 +6,5 @@ test("Change the printable area", async ({ page }) => {
     await excalideckEditorPage.go();
     await excalideckEditorPage.goToSettings();
     await excalideckEditorPage.changePrintableArea(1000, 1000);
-    await excalideckEditorPage.goToSlides();
     await excalideckEditorPage.expectToSee("a square printable area");
 });

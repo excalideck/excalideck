@@ -17,6 +17,11 @@ import { useState } from "react";
 import SlideMiniature from "../SlideMiniature";
 import SortableSlideMiniature from "../SortableSlideMiniature";
 
+const SLIDE_MINIATURES_DROP_TRANSITION_DURATION = parseInt(
+    process.env["SLIDE_MINIATURES_DROP_TRANSITION_DURATION"] ?? "250",
+    10
+);
+
 interface Props {
     deck: Deck;
     onMoveSlide: (fromIndex: number, toIndex: number) => void;
@@ -76,7 +81,12 @@ export default function SlidesMiniatures({
                     />
                 ))}
             </SortableContext>
-            <DragOverlay>
+            <DragOverlay
+                dropAnimation={{
+                    duration: SLIDE_MINIATURES_DROP_TRANSITION_DURATION,
+                    easing: "ease",
+                }}
+            >
                 {activeId ? (
                     <SlideMiniature
                         deck={deck}
