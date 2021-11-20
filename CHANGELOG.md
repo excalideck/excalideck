@@ -1,3 +1,11 @@
+## November 20, 2021
+
+Fixes:
+
+- fix file-saving errors and issues in browsers not supporting the
+  [File System Access API](https://developer.mozilla.org/en-US/docs/Web/API/File_System_Access_API)
+  (Firefox, Safari, Brave, etc)
+
 ## November 12, 2021
 
 Features:
