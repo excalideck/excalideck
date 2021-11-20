@@ -6,6 +6,7 @@ import {
 import { Deck } from "@excalideck/deck";
 import { FileSavingState } from "@excalideck/excalideck-editor";
 import ExcalideckFile from "@excalideck/excalideck-file";
+import { nanoid } from "nanoid";
 import { useCallback, useState } from "react";
 import LocalDeck from "../LocalDeck";
 import isAbortError from "../utils/isAbortError";
@@ -14,6 +15,7 @@ interface PersistentExcalideckEditorState {
     fileSavingState: FileSavingState;
     openFileHandle: FileSystemHandle | null;
     deck: Deck;
+    excalideckEditorKey: string;
 }
 
 export default function usePersistentExcalideckEditorState(
@@ -27,6 +29,7 @@ export default function usePersistentExcalideckEditorState(
         fileSavingState: null,
         openFileHandle: null,
         deck: saveToLocalStorage ? LocalDeck.get() ?? initialDeck : initialDeck,
+        excalideckEditorKey: nanoid(),
     });
 
     async function loadFromFile() {
@@ -41,11 +44,15 @@ export default function usePersistentExcalideckEditorState(
             setPersistentExcalideckEditorState({
                 deck: deck,
                 openFileHandle: file.handle ?? null,
-                fileSavingState: {
-                    fileName: file.name,
-                    isSavingInProgress: false,
-                    areAllChangesSaved: true,
-                },
+                fileSavingState: file.handle
+                    ? {
+                          fileName: file.name,
+                          isSavingInProgress: false,
+                          areAllChangesSaved: true,
+                      }
+                    : null,
+                // Force remount of the ExcalideckEditor component
+                excalideckEditorKey: nanoid(),
             });
         } catch (error) {
             if (!isAbortError(error)) {
@@ -73,27 +80,29 @@ export default function usePersistentExcalideckEditorState(
             const fileHandle = await fileSave(
                 blob,
                 {
-                    fileName: "deck",
+                    fileName: "deck.pdf",
                     mimeTypes: [ExcalideckFile.mimeType],
                     description: "Save to Excalideck file",
                     id: "Excalideck",
                     extensions: [ExcalideckFile.extension],
                     excludeAcceptAllOption: true,
                 },
-                persistentExcalideckEditorState.openFileHandle ?? null
+                persistentExcalideckEditorState.openFileHandle
             );
 
             setPersistentExcalideckEditorState(
                 (latestPersistentExcalideckEditorState) => ({
                     ...latestPersistentExcalideckEditorState,
                     openFileHandle: fileHandle,
-                    fileSavingState: {
-                        fileName: fileHandle!.name,
-                        isSavingInProgress: false,
-                        areAllChangesSaved:
-                            latestPersistentExcalideckEditorState.deck ===
-                            persistentExcalideckEditorState.deck,
-                    },
+                    fileSavingState: fileHandle
+                        ? {
+                              fileName: fileHandle.name,
+                              isSavingInProgress: false,
+                              areAllChangesSaved:
+                                  latestPersistentExcalideckEditorState.deck ===
+                                  persistentExcalideckEditorState.deck,
+                          }
+                        : null,
                 })
             );
         } catch (error) {
@@ -129,6 +138,8 @@ export default function usePersistentExcalideckEditorState(
     return {
         deck: persistentExcalideckEditorState.deck,
         fileSavingState: persistentExcalideckEditorState.fileSavingState,
+        excalideckEditorKey:
+            persistentExcalideckEditorState.excalideckEditorKey,
         loadFromFile,
         saveToFile,
         updateDeck,
