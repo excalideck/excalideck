@@ -7,7 +7,7 @@ const IS_CI = process.env["CI"] === "true";
 const config: PlaywrightTestConfig = {
     testDir: "test/browser",
     forbidOnly: IS_CI,
-    retries: IS_CI ? 4 : 0,
+    retries: IS_CI ? 2 : 0,
     webServer: {
         command:
             "yarn parcel test/browser/SlideRenderersPage/index.html --no-cache --no-hmr --no-autoinstall",
