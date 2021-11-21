@@ -16,7 +16,7 @@ printable area.
 
 ### Difficulty
 
-The main difficulty with the above approach is identifying where the printable
+The main difficulty with this approach is identifying **where** the printable
 area is located inside the canvas. This is because the `exportToCanvas` function
 produces a canvas with a coordinate system where `(0, 0)` is assigned to the
 top-left-most point of the set of rendered Excalidraw elements.
@@ -35,6 +35,6 @@ The chosen way to overcome this difficulty is to add a "far away" Excalidraw
 element, a small rectangle whose top-left-most point is _most likely_ above and
 more-to-the-left any other element. Knowing the Excalidraw-coordinates of this
 rectangle, and knowing that its top-left-most point will _most likely_ have
-canvas-coordinates (0,0), we can then figure out the correct cropping area.
+canvas-coordinates `(0,0)`, we can then figure out the correct cropping area.
 
 ![](./correct-cropping.png)
