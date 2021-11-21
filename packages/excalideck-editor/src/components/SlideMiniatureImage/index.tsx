@@ -46,7 +46,8 @@ export default function SlideMiniatureImage({ deck, slide }: Props) {
             const cachedSlideCanvas = slideCanvasCache.get(debouncedSlide.id);
             const updatedSlideCanvas = canvasSlideRenderer.renderSlide(
                 debouncedDeck,
-                debouncedSlide.id
+                debouncedSlide.id,
+                1
             );
             if (updatedSlideCanvas !== cachedSlideCanvas) {
                 renderCanvas(containerRef, updatedSlideCanvas);

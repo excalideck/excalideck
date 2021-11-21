@@ -15,6 +15,7 @@ const config: PlaywrightTestConfig = {
     },
     use: {
         trace: "retain-on-failure",
+        viewport: { width: 2000, height: 2000 },
     },
     reporter: IS_CI ? [["github"], ["list"]] : "list",
     projects: compact([

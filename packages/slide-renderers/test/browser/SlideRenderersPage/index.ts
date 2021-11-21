@@ -8,43 +8,45 @@ export default class SlideRenderersPage {
         await this.page.goto("/");
     }
 
-    async renderSlideCanvas(deck: Deck, slideId: string) {
+    async renderSlideCanvas(deck: Deck, slideId: string, scale: number) {
         await this.page.evaluate(
-            ({ deck, slideId }) => {
+            ({ deck, slideId, scale }) => {
                 const slideCanvas = (
                     window as any
-                ).canvasSlideRenderer.renderSlide(deck, slideId);
+                ).canvasSlideRenderer.renderSlide(deck, slideId, scale);
                 document.body.appendChild(slideCanvas);
             },
-            { deck, slideId }
+            { deck, slideId, scale }
         );
     }
 
-    async verifySlideCanvas() {
+    async verifySlideCanvas(testCase: number) {
         const slideCanvas = await this.page.locator("canvas");
-        expect(await slideCanvas.screenshot()).toMatchSnapshot("result.png", {
-            threshold: 0,
-        });
+        expect(await slideCanvas.screenshot()).toMatchSnapshot(
+            `result-${testCase}.png`,
+            { threshold: 0 }
+        );
     }
 
-    async renderSlidePngBlob(deck: Deck, slideId: string) {
+    async renderSlidePngBlob(deck: Deck, slideId: string, scale: number) {
         await this.page.evaluate(
-            async ({ deck, slideId }) => {
+            async ({ deck, slideId, scale }) => {
                 const slidePngBlob: Blob = await (
                     window as any
-                ).pngBlobSlideRenderer.renderSlide(deck, slideId);
+                ).pngBlobSlideRenderer.renderSlide(deck, slideId, scale);
                 const slideImg = document.createElement("img");
                 slideImg.setAttribute("src", URL.createObjectURL(slidePngBlob));
                 document.body.appendChild(slideImg);
             },
-            { deck, slideId }
+            { deck, slideId, scale }
         );
     }
 
-    async verifySlidePngBlob() {
+    async verifySlidePngBlob(testCase: number) {
         const slideImg = await this.page.locator("img");
-        expect(await slideImg.screenshot()).toMatchSnapshot("result.png", {
-            threshold: 0,
-        });
+        expect(await slideImg.screenshot()).toMatchSnapshot(
+            `result-${testCase}.png`,
+            { threshold: 0 }
+        );
     }
 }

@@ -8,7 +8,7 @@ const EXCALIDRAW_EXPORT_DEFAULT_PADDING = 10;
 
 const canvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
     renderSlide: lruMemoize(
-        (deck: Deck, slideId: string): HTMLCanvasElement => {
+        (deck: Deck, slideId: string, scale: number): HTMLCanvasElement => {
             const slide = DeckOperations.getSlide(deck, slideId);
             const { printableArea } = deck;
 
@@ -23,14 +23,21 @@ const canvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
 
             const drawingBoardCanvas = exportToCanvas({
                 elements: excalidrawElements as any,
+                getDimensions: (width, height) => ({
+                    width: width * scale,
+                    height: height * scale,
+                    scale,
+                }),
             });
 
             const slideCanvas = cropCanvas(
                 drawingBoardCanvas,
-                EXCALIDRAW_EXPORT_DEFAULT_PADDING - farAwayRectangle.x,
-                EXCALIDRAW_EXPORT_DEFAULT_PADDING - farAwayRectangle.y,
-                printableArea.width,
-                printableArea.height
+                (EXCALIDRAW_EXPORT_DEFAULT_PADDING - farAwayRectangle.x) *
+                    scale,
+                (EXCALIDRAW_EXPORT_DEFAULT_PADDING - farAwayRectangle.y) *
+                    scale,
+                printableArea.width * scale,
+                printableArea.height * scale
             );
             // Assign a random id so tests can distinguish between canvases
             slideCanvas.setAttribute("data-testid", nanoid());
@@ -39,10 +46,11 @@ const canvasSlideRenderer: SlideRenderer<HTMLCanvasElement> = {
         },
         {
             maxSize: 100,
-            getCacheKey: (deck, slideId) =>
+            getCacheKey: (deck, slideId, scale) =>
                 Hash.excalidrawElements(deck.commonExcalidrawElements) +
                 Hash.printableArea(deck.printableArea) +
-                Hash.slide(DeckOperations.getSlide(deck, slideId)),
+                Hash.slide(DeckOperations.getSlide(deck, slideId)) +
+                scale * 37,
         }
     ),
 };
@@ -65,15 +73,16 @@ function cropCanvas(
 }
 
 function getFarAwayRectangle(printableArea: PrintableArea) {
+    const FAR = 4_500;
     return {
         id: "FAR_AWAY_RECTANGLE",
         versionNonce: 0,
         version: 0,
         type: "rectangle",
-        x: -5_000,
-        y: -5_000,
-        width: 5_000 + printableArea.width + 10,
-        height: 5_000 + printableArea.height + 10,
+        x: -FAR,
+        y: -FAR,
+        width: FAR + printableArea.width + 10,
+        height: FAR + printableArea.height + 10,
         angle: 0,
         strokeColor: "transparent",
         backgroundColor: "transparent",
