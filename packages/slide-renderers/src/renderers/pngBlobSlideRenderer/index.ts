@@ -1,7 +1,7 @@
 import { Deck, DeckOperations, Hash } from "@excalideck/deck";
-import SlideRenderer from "../SlideRenderer";
-import lruMemoize from "../utils/lruMemoize";
-import canvasSlideRenderer from "./canvasSlideRenderer";
+import SlideRenderer from "../../SlideRenderer";
+import lruMemoize from "../../utils/lruMemoize";
+import canvasSlideRenderer from "../canvasSlideRenderer";
 
 const pngBlobSlideRenderer: SlideRenderer<Promise<Blob>> = {
     renderSlide: lruMemoize(

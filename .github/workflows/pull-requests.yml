@@ -49,11 +49,11 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy bundle
-        run: yarn deploy:bundle
+        run: yarn deploy-bundle
       - name: Deploy preview entrypoint
-        run: yarn deploy:entrypoint:preview
+        run: yarn deploy-entrypoint-preview
       - name: Purge CDN cache
-        run: yarn deploy:purge
+        run: yarn deploy-purge
       - uses: mshick/add-pr-comment@v1
         with:
           message: |

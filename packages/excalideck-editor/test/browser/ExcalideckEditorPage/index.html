@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>@excalideck/excalideck-editor test page</title>
+    <link
+      rel="preload"
+      href="https://unpkg.com/@excalidraw/excalidraw@0.10.0/dist/excalidraw-assets-dev/Virgil.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="https://unpkg.com/@excalidraw/excalidraw@0.10.0/dist/excalidraw-assets-dev/Cascadia.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module">
+      import { DeckOperations } from "@excalideck/deck";
+      import { StrictMode } from "react";
+      import ReactDOM from "react-dom";
+      import ExcalideckEditor from "../../../src";
+
+      const noop = () => void 0;
+
+      ReactDOM.render(
+        <StrictMode>
+          <ExcalideckEditor
+            initialDeck={DeckOperations.makeEmptyDeck({
+              width: 1500,
+              height: 1000,
+            })}
+            onDeckChange={noop}
+            fileSavingState={null}
+            onLoadFromFile={noop}
+            onSaveToFile={noop}
+            initialLibrary={[]}
+            onLibraryChange={noop}
+          />
+        </StrictMode>,
+        document.getElementById("root")
+      );
+    </script>
+    <style>
+      html,
+      body,
+      #root {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        --ui-font: system-ui, BlinkMacSystemFont, -apple-system, Segoe UI,
+          Roboto, Helvetica, Arial, sans-serif;
+        font-family: var(--ui-font);
+      }
+    </style>
+  </body>
+</html>
