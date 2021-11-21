@@ -40,7 +40,7 @@ correct cropping area.
 
 ![](./correct-cropping.png)
 
-### Notes
+### Notes
 
 - when calling `CanvasRenderingContext2D.drawImage` in webkit browsers, if we
   pass cropping coordinates that exceed the bounds of the source canvas (in our
