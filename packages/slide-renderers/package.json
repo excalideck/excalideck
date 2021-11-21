@@ -7,7 +7,10 @@
   ],
   "scripts": {
     "clean": "rm -rf build",
-    "build": "yarn clean && tsc"
+    "build": "yarn clean && tsc",
+    "test-browser": "playwright install --with-deps > /dev/null && playwright test",
+    "test-node": "jest",
+    "test": "yarn test-node && yarn test-browser"
   },
   "dependencies": {
     "@excalideck/deck": "workspace:*",
@@ -20,7 +23,12 @@
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
+    "@playwright/test": "^1.16.3",
+    "@types/jest": "^27.0.3",
     "@types/lru-cache": "^5.1.1",
+    "jest": "^27.3.1",
+    "parcel": "^2.0.1",
+    "ts-jest": "^27.0.7",
     "typescript": "^4.4.4"
   }
 }

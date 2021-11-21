@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>@excalideck/slide-renderers test page</title>
+    <link
+      rel="preload"
+      href="https://unpkg.com/@excalidraw/excalidraw@0.10.0/dist/excalidraw-assets-dev/Virgil.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="preload"
+      href="https://unpkg.com/@excalidraw/excalidraw@0.10.0/dist/excalidraw-assets-dev/Cascadia.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin="anonymous"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        height: 100vh;
+        width: 100vw;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: #aaaaaa;
+      }
+    </style>
+    <script type="module">
+      import { canvasSlideRenderer, pngBlobSlideRenderer } from "../../../src";
+
+      window.canvasSlideRenderer = canvasSlideRenderer;
+      window.pngBlobSlideRenderer = pngBlobSlideRenderer;
+    </script>
+  </head>
+  <body></body>
+</html>

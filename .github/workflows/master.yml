@@ -52,10 +52,10 @@ jobs:
       - name: Build
         run: yarn build
       - name: Deploy bundle
-        run: yarn deploy:bundle
+        run: yarn deploy-bundle
       - name: Deploy prod app entrypoint
-        run: yarn deploy:entrypoint:prod:app
+        run: yarn deploy-entrypoint-prod-app
       - name: Deploy prod homepage entrypoint
-        run: yarn deploy:entrypoint:prod:homepage
+        run: yarn deploy-entrypoint-prod-homepage
       - name: Purge CDN cache
-        run: yarn deploy:purge
+        run: yarn deploy-purge

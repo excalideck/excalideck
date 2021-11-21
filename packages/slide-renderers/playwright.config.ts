@@ -10,17 +10,12 @@ const config: PlaywrightTestConfig = {
     retries: IS_CI ? 2 : 0,
     webServer: {
         command:
-            "yarn parcel test/browser/ExcalideckEditorPage/index.html --no-cache --no-hmr --no-autoinstall",
+            "yarn parcel test/browser/SlideRenderersPage/index.html --no-cache --no-hmr --no-autoinstall",
         port: 1234,
-        env: {
-            EXCALIDRAW_ELEMENTS_INPUT_ONCHANGE_CHECK_INTERVAL: "1",
-            SLIDE_MINIATURES_DROP_TRANSITION_DURATION: "0",
-            SORTABLE_SLIDE_MINIATURE_MOVE_TRANSITION_DURATION: "0",
-            SLIDE_MINIATURE_IMAGE_RENDER_DEBOUNCE: "1",
-        },
     },
     use: {
         trace: "retain-on-failure",
+        viewport: { width: 2000, height: 2000 },
     },
     reporter: IS_CI ? [["github"], ["list"]] : "list",
     projects: compact([

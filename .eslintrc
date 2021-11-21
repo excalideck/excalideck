@@ -37,7 +37,7 @@
     },
     {
       "files": ["**/test/**/*.test.*"],
-      "excludedFiles": "**/test/scenario/**/*",
+      "excludedFiles": "**/test/browser/**/*",
       "extends": ["plugin:jest/recommended"]
     }
   ]

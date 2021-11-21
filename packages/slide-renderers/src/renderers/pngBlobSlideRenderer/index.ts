@@ -1,14 +1,14 @@
 import { Deck, DeckOperations, Hash } from "@excalideck/deck";
-import SlideRenderer from "../SlideRenderer";
-import lruMemoize from "../utils/lruMemoize";
-import canvasSlideRenderer from "./canvasSlideRenderer";
+import SlideRenderer from "../../SlideRenderer";
+import lruMemoize from "../../utils/lruMemoize";
+import canvasSlideRenderer from "../canvasSlideRenderer";
 
 const pngBlobSlideRenderer: SlideRenderer<Promise<Blob>> = {
     renderSlide: lruMemoize(
-        (deck: Deck, slideId: string): Promise<Blob> =>
+        (deck: Deck, slideId: string, scale: number): Promise<Blob> =>
             new Promise((resolve, reject) => {
                 canvasSlideRenderer
-                    .renderSlide(deck, slideId)
+                    .renderSlide(deck, slideId, scale)
                     .toBlob((blob) =>
                         blob !== null
                             ? resolve(blob)

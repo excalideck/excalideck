@@ -11,9 +11,9 @@
     "clean": "rm -rf build dist",
     "build": "yarn clean && tsc && parcel build --no-autoinstall",
     "start": "parcel dev/index.html --no-autoinstall",
-    "test:scenario": "playwright install --with-deps > /dev/null && playwright test",
-    "test:unit": "jest",
-    "test": "yarn test:unit && yarn test:scenario"
+    "test-browser": "playwright install --with-deps > /dev/null && playwright test",
+    "test-node": "jest",
+    "test": "yarn test-node && yarn test-browser"
   },
   "dependencies": {
     "@dnd-kit/core": "^4.0.2",

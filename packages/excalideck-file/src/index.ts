@@ -47,7 +47,8 @@ const ExcalideckFile = {
             const slidePage = deckPDFDocument.addPage([width, height]);
             const slidePngBlob = await pngBlobSlideRenderer.renderSlide(
                 deck,
-                slide.id
+                slide.id,
+                1
             );
             const slidePngImage = await deckPDFDocument.embedPng(
                 await slidePngBlob.arrayBuffer()
